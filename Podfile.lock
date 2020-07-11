@@ -1,0 +1,16 @@
+PODS:
+  - Shapr3DFileConverter (0.0.1)
+
+DEPENDENCIES:
+  - Shapr3DFileConverter (from `.`)
+
+EXTERNAL SOURCES:
+  Shapr3DFileConverter:
+    :path: "."
+
+SPEC CHECKSUMS:
+  Shapr3DFileConverter: 6a8877d8cae5d522d5cdc924398494e706daf3ac
+
+PODFILE CHECKSUM: 3ea35a1d1db974abea0974c5b33a06468d25f4e8
+
+COCOAPODS: 1.9.3

@@ -8,9 +8,18 @@
 
 import Foundation
 
+// takes a shapr file
 public class Converter {
 	
-	public func foo() {
-		print("foo")
+	public init() {
+		
 	}
+	
+	public func foo() -> Int {
+		print("foo")
+		return 1
+	}
+	
+	// input: Data?
+	// ...
 }
