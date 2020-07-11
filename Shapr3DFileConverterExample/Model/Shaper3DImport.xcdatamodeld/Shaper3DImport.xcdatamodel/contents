@@ -1,22 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Base3DFormat" representedClassName="Base3DFormat" syncable="YES" codeGenerationType="class">
-        <attribute name="created" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="created" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="data" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <attribute name="filename" attributeType="String"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="imageFull" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <attribute name="imageThumbnail" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
-        <attribute name="size" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="size" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="derivedFormats" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Derived3DFormat" inverseName="base" inverseEntity="Derived3DFormat"/>
     </entity>
     <entity name="Derived3DFormat" representedClassName="Derived3DFormat" syncable="YES" codeGenerationType="class">
-        <attribute name="convertProgress" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="created" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="fileExtension" attributeType="String"/>
-        <attribute name="size" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="convertProgress" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="created" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="data" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="fileExtension" optional="YES" attributeType="String"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="size" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="base" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Base3DFormat" inverseName="derivedFormats" inverseEntity="Base3DFormat"/>
     </entity>
     <elements>
-        <element name="Base3DFormat" positionX="261" positionY="198" width="128" height="133"/>
-        <element name="Derived3DFormat" positionX="270" positionY="252" width="128" height="118"/>
+        <element name="Base3DFormat" positionX="261" positionY="198" width="128" height="163"/>
+        <element name="Derived3DFormat" positionX="270" positionY="252" width="128" height="148"/>
     </elements>
 </model>

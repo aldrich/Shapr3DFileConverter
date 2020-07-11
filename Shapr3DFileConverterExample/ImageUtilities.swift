@@ -31,4 +31,13 @@ extension UIImage {
 		UIGraphicsEndImageContext()
 		return roundedImage
 	}
+	
+	
+}
+
+extension Data {
+	var scaledImage: UIImage? {
+		return UIImage(data: self,
+					   scale: UIScreen.main.scale)
+	}
 }

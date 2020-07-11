@@ -25,7 +25,9 @@
 		BECD0B0424B9BC7000E51BA6 /* ShaprDocumentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECD0B0224B9BC7000E51BA6 /* ShaprDocumentPicker.swift */; };
 		BECD0B0524B9BC7000E51BA6 /* ShaprDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECD0B0324B9BC7000E51BA6 /* ShaprDocument.swift */; };
 		BECD0B0624B9BD3000E51BA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BECD0AF224B9BBC200E51BA6 /* Assets.xcassets */; };
-		BECD0B0824B9BFD400E51BA6 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECD0B0724B9BFD400E51BA6 /* Models.swift */; };
+		BECD0B0824B9BFD400E51BA6 /* ShaprFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECD0B0724B9BFD400E51BA6 /* ShaprFile.swift */; };
+		BECD0B0A24B9E5E300E51BA6 /* DerivedFileFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECD0B0924B9E5E300E51BA6 /* DerivedFileFormat.swift */; };
+		BECD0B0C24B9F1BB00E51BA6 /* ConvertQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECD0B0B24B9F1BB00E51BA6 /* ConvertQueue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,7 +64,9 @@
 		BECD0AFE24B9BC6100E51BA6 /* Shaper3DImport.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shaper3DImport.xcdatamodel; sourceTree = "<group>"; };
 		BECD0B0224B9BC7000E51BA6 /* ShaprDocumentPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShaprDocumentPicker.swift; sourceTree = "<group>"; };
 		BECD0B0324B9BC7000E51BA6 /* ShaprDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShaprDocument.swift; sourceTree = "<group>"; };
-		BECD0B0724B9BFD400E51BA6 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		BECD0B0724B9BFD400E51BA6 /* ShaprFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShaprFile.swift; sourceTree = "<group>"; };
+		BECD0B0924B9E5E300E51BA6 /* DerivedFileFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DerivedFileFormat.swift; sourceTree = "<group>"; };
+		BECD0B0B24B9F1BB00E51BA6 /* ConvertQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertQueue.swift; sourceTree = "<group>"; };
 		C655D132614495343BD22412 /* Pods-Shapr3DFileConverterExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shapr3DFileConverterExample.release.xcconfig"; path = "Target Support Files/Pods-Shapr3DFileConverterExample/Pods-Shapr3DFileConverterExample.release.xcconfig"; sourceTree = "<group>"; };
 		F3BE0D0D9DCC06C73A3BB407 /* Pods_Shapr3DFileConverterExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shapr3DFileConverterExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -131,7 +135,9 @@
 				BECD0AB824B9B3E000E51BA6 /* Shapr3DFileConverter.h */,
 				BECD0AB924B9B3E000E51BA6 /* Info.plist */,
 				BECD0AD824B9B4CB00E51BA6 /* Converter.swift */,
-				BECD0B0724B9BFD400E51BA6 /* Models.swift */,
+				BECD0B0B24B9F1BB00E51BA6 /* ConvertQueue.swift */,
+				BECD0B0724B9BFD400E51BA6 /* ShaprFile.swift */,
+				BECD0B0924B9E5E300E51BA6 /* DerivedFileFormat.swift */,
 			);
 			path = Shapr3DFileConverter;
 			sourceTree = "<group>";
@@ -375,8 +381,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BECD0B0A24B9E5E300E51BA6 /* DerivedFileFormat.swift in Sources */,
 				BECD0AD924B9B4CB00E51BA6 /* Converter.swift in Sources */,
-				BECD0B0824B9BFD400E51BA6 /* Models.swift in Sources */,
+				BECD0B0824B9BFD400E51BA6 /* ShaprFile.swift in Sources */,
+				BECD0B0C24B9F1BB00E51BA6 /* ConvertQueue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
