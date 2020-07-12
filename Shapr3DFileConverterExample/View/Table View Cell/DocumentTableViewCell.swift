@@ -15,6 +15,7 @@ class DocumentTableViewCell: UITableViewCell, LayoutDelegate {
 		didSet {
 			tagsCollectionView.backgroundColor = .clear
 			tagsCollectionView.isScrollEnabled = false
+			tagsCollectionView.isUserInteractionEnabled = false
 		}
 	}
 
