@@ -32,6 +32,10 @@
 		BEEED11324BAAC190084282B /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEED11224BAAC190084282B /* Types.swift */; };
 		BEEED11624BAB0100084282B /* MasterViewController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEED11524BAB0100084282B /* MasterViewController+UITableView.swift */; };
 		BEEED11824BAB1BB0084282B /* ACDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEED11724BAB1BB0084282B /* ACDataManager.swift */; };
+		BEEED11A24BAD9590084282B /* CollectionViewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEED11924BAD9590084282B /* CollectionViewProvider.swift */; };
+		BEEED11C24BAD98A0084282B /* AccessoryViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEED11B24BAD98A0084282B /* AccessoryViews.swift */; };
+		BEEED11E24BADFEA0084282B /* TagsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEED11D24BADFEA0084282B /* TagsLayout.swift */; };
+		BEEED12024BAE0520084282B /* BaseLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEED11F24BAE0520084282B /* BaseLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +79,10 @@
 		BEEED11224BAAC190084282B /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		BEEED11524BAB0100084282B /* MasterViewController+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MasterViewController+UITableView.swift"; sourceTree = "<group>"; };
 		BEEED11724BAB1BB0084282B /* ACDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACDataManager.swift; sourceTree = "<group>"; };
+		BEEED11924BAD9590084282B /* CollectionViewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewProvider.swift; sourceTree = "<group>"; };
+		BEEED11B24BAD98A0084282B /* AccessoryViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryViews.swift; sourceTree = "<group>"; };
+		BEEED11D24BADFEA0084282B /* TagsLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsLayout.swift; sourceTree = "<group>"; };
+		BEEED11F24BAE0520084282B /* BaseLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLayout.swift; sourceTree = "<group>"; };
 		C655D132614495343BD22412 /* Pods-Shapr3DFileConverterExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shapr3DFileConverterExample.release.xcconfig"; path = "Target Support Files/Pods-Shapr3DFileConverterExample/Pods-Shapr3DFileConverterExample.release.xcconfig"; sourceTree = "<group>"; };
 		F3BE0D0D9DCC06C73A3BB407 /* Pods_Shapr3DFileConverterExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shapr3DFileConverterExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -199,8 +207,8 @@
 			isa = PBXGroup;
 			children = (
 				BECD0AF524B9BC5600E51BA6 /* MasterViewController.swift */,
-				BECD0AF624B9BC5600E51BA6 /* DetailViewController.swift */,
 				BEEED11524BAB0100084282B /* MasterViewController+UITableView.swift */,
+				BECD0AF624B9BC5600E51BA6 /* DetailViewController.swift */,
 				BEEED11724BAB1BB0084282B /* ACDataManager.swift */,
 				BEEED10F24BAA9920084282B /* Table View Cell */,
 			);
@@ -211,6 +219,10 @@
 			isa = PBXGroup;
 			children = (
 				BECD0AF424B9BC5600E51BA6 /* DocumentTableViewCell.swift */,
+				BEEED11924BAD9590084282B /* CollectionViewProvider.swift */,
+				BEEED11B24BAD98A0084282B /* AccessoryViews.swift */,
+				BEEED11D24BADFEA0084282B /* TagsLayout.swift */,
+				BEEED11F24BAE0520084282B /* BaseLayout.swift */,
 			);
 			path = "Table View Cell";
 			sourceTree = "<group>";
@@ -438,11 +450,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				BECD0B0024B9BC6100E51BA6 /* Shaper3DImport.xcdatamodeld in Sources */,
+				BEEED11A24BAD9590084282B /* CollectionViewProvider.swift in Sources */,
 				BEEED11624BAB0100084282B /* MasterViewController+UITableView.swift in Sources */,
 				BECD0AF924B9BC5600E51BA6 /* MasterViewController.swift in Sources */,
 				BECD0B0424B9BC7000E51BA6 /* ShaprDocumentPicker.swift in Sources */,
 				BECD0AF824B9BC5600E51BA6 /* DocumentTableViewCell.swift in Sources */,
 				BECD0AE124B9BB2E00E51BA6 /* AppDelegate.swift in Sources */,
+				BEEED11C24BAD98A0084282B /* AccessoryViews.swift in Sources */,
+				BEEED11E24BADFEA0084282B /* TagsLayout.swift in Sources */,
+				BEEED12024BAE0520084282B /* BaseLayout.swift in Sources */,
 				BECD0B0524B9BC7000E51BA6 /* ShaprDocument.swift in Sources */,
 				BECD0AFA24B9BC5600E51BA6 /* DetailViewController.swift in Sources */,
 				BEEED11124BAAA6C0084282B /* Base3DFormat+Display.swift in Sources */,

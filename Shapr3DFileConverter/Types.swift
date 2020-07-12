@@ -9,5 +9,5 @@
 import Foundation
 
 public enum ShaprOutputFormat: String {
-	case step, stl, obj
+	case shapr, step, stl, obj
 }

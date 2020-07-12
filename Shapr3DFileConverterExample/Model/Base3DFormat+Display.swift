@@ -19,11 +19,12 @@ extension Base3DFormat {
 			?? []
 	}
 	
-	var availableFormatStrs: [String] {
-		["shapr"] + available3DFormats.compactMap { $0.fileExtension }.sorted()
-	}
-	
-	var availableFormats: [ShaprOutputFormat] {
-		availableFormatStrs.compactMap { ShaprOutputFormat(rawValue: $0) }
+	func availableFormats(includeShapr: Bool = true) -> [ShaprOutputFormat] {
+		var ret = available3DFormats
+			.compactMap { ShaprOutputFormat(rawValue: $0.fileExtension!) }
+		if includeShapr {
+			ret.insert(.shapr, at: 0)
+		}
+		return ret
 	}
 }
