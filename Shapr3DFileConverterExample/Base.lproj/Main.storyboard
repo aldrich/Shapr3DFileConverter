@@ -107,19 +107,19 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Heading" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ohz-a3-DWb">
-                                            <rect key="frame" x="72" y="12" width="62.5" height="31"/>
+                                            <rect key="frame" x="72" y="15.5" width="62.5" height="19.5"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="252" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mg1-dx-EUh" userLabel="Detail">
-                                            <rect key="frame" x="72" y="43" width="236" height="17"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <rect key="frame" x="72" y="38" width="236" height="16"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lRW-Ms-GEX">
-                                            <rect key="frame" x="144.5" y="20.5" width="163.5" height="14"/>
+                                            <rect key="frame" x="144.5" y="18.5" width="163.5" height="14"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="14" id="bf8-TM-Vtt"/>
                                             </constraints>
@@ -169,13 +169,12 @@
                                         <constraint firstItem="lRW-Ms-GEX" firstAttribute="leading" secondItem="ohz-a3-DWb" secondAttribute="trailing" constant="10" id="7GJ-k4-LGa"/>
                                         <constraint firstItem="rfy-R4-lac" firstAttribute="centerY" secondItem="Ymn-nV-bh2" secondAttribute="centerY" id="DyJ-RU-AKB"/>
                                         <constraint firstItem="lRW-Ms-GEX" firstAttribute="centerY" secondItem="ohz-a3-DWb" secondAttribute="centerY" id="SfQ-0k-O5X"/>
-                                        <constraint firstItem="ohz-a3-DWb" firstAttribute="top" secondItem="Ymn-nV-bh2" secondAttribute="top" priority="999" constant="12" id="SmT-cR-A6y"/>
-                                        <constraint firstItem="Mg1-dx-EUh" firstAttribute="top" secondItem="ohz-a3-DWb" secondAttribute="bottom" id="UE4-qs-Gdt"/>
+                                        <constraint firstItem="Mg1-dx-EUh" firstAttribute="top" secondItem="Ymn-nV-bh2" secondAttribute="centerY" constant="2" id="UE4-qs-Gdt"/>
+                                        <constraint firstItem="ohz-a3-DWb" firstAttribute="bottom" secondItem="Ymn-nV-bh2" secondAttribute="centerY" constant="-1" id="Yhw-3D-rHe"/>
                                         <constraint firstItem="ohz-a3-DWb" firstAttribute="leading" secondItem="rfy-R4-lac" secondAttribute="trailing" constant="12" id="cwb-h3-1UD"/>
                                         <constraint firstAttribute="trailing" secondItem="Mg1-dx-EUh" secondAttribute="trailing" constant="12" id="ejS-VI-cU4"/>
                                         <constraint firstItem="Mg1-dx-EUh" firstAttribute="leading" secondItem="ohz-a3-DWb" secondAttribute="leading" id="epy-iz-XBG"/>
                                         <constraint firstAttribute="trailing" secondItem="lRW-Ms-GEX" secondAttribute="trailing" constant="12" id="rPn-vA-84h"/>
-                                        <constraint firstAttribute="bottom" secondItem="Mg1-dx-EUh" secondAttribute="bottom" constant="12" id="tj4-Ww-bYq"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
