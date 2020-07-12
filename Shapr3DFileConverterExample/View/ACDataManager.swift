@@ -81,13 +81,12 @@ class ACDataManager: NSObject, DataManager, NSFetchedResultsControllerDelegate {
 		}
 		
 		let new3D = Base3DFormat(context: context)
-		
-		let imgData = imageData(filename: filename)
-		
 		new3D.id = UUID()
+		
+		let imgData = imageData(filename: filename, id: new3D.id!)
 		new3D.filename = filename
 		new3D.imageFull = imgData
-		new3D.imageThumbnail = imageData(filename: filename, thumb: true)
+		new3D.imageThumbnail = imageData(filename: filename, id: new3D.id!, thumb: true)
 		new3D.size = Int32(data.count)
 		new3D.created = Date()
 		new3D.derivedFormats = nil
@@ -235,17 +234,35 @@ class ACDataManager: NSObject, DataManager, NSFetchedResultsControllerDelegate {
 
 extension ACDataManager {
 	
-	func imageData(filename: String, thumb: Bool = false) -> Data? {
+	func imageData(filename: String, id: UUID, thumb: Bool = false) -> Data? {
 		
 		let possibleImages = [
 			"burden",
 			"khaprenko",
 			"meiying",
+			"pat-kay",
+			"patrick-ryan",
+			"pawel-czerwinski",
+			"pawel-czerwinski-2",
+			"peter-nguyen",
+			"ren-ran",
+			"s-s",
+			"samsomfotos",
+			"samuel-zeller",
+			"spencer-davis",
 			"spratt",
+			"swan-leroi",
+			"t-h-chia",
+			"tyler-casey",
+			"vince-russell",
+			"william-warby",
+			"willian-justen-de-vasconcellos",
+			"yuiizaa-september",
+			"yuriy-garnaev",
 		]
 		
 		// arbitrary based on filename
-		let index = abs(filename.hashValue) % possibleImages.count
+		let index = abs(id.uuidString.hashValue) % possibleImages.count
 		let imageName = possibleImages[index]
 		
 		let fullName = "\(imageName)-full"
