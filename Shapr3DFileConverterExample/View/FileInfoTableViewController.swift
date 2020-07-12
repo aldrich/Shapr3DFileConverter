@@ -82,6 +82,8 @@ class FileInfoTableViewController: UITableViewController {
 		
 		let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 		cell.textLabel?.font = FontUtilities.roundedFont(ofSize: 15, weight: .regular)
+		cell.textLabel?.minimumScaleFactor = 0.7
+		cell.textLabel?.adjustsFontSizeToFitWidth = true
 		cell.textLabel?.text = sections[indexPath.section][indexPath.row]
 		return cell
 	}
