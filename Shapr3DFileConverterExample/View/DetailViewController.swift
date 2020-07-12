@@ -35,7 +35,9 @@ class DetailViewController: UIViewController {
 			headerLabel?.text = item.filename
 			
 			// detailLabel?.text = "\(item.size) bytes"
-			let formats = item.availableFormatStrs.joined(separator: ", ")
+			let formats = item.availableFormatStrs
+				.joined(separator: ", ")
+				.uppercased()
 			detailLabel?.text = "Formats: \(formats)"
 			
 			imageView?.image = item.imageFull?.scaledImage

@@ -16,8 +16,7 @@ class DocumentTableViewCell: UITableViewCell {
 	
 	static var dateFormatter: DateFormatter = {
 		let df = DateFormatter()
-		df.dateFormat = "hh:mm:ss"
-//		df.dateFormat = "yyyy-MM-dd HH:mm:ss"
+		df.dateFormat = "yyyy-MM-dd HH:mm:ss"
 		return df
 	}()
 	
@@ -55,7 +54,12 @@ class DocumentTableViewCell: UITableViewCell {
 								 firstKV.key,
 								 firstKV.value * 100.0)
 		} else {
-			progressStr = date
+			let formats = file.availableFormats
+			if formats.count > 0 {
+				progressStr = String(format: "%@ +%d format(s)", date, formats.count)
+			} else {
+				progressStr = String(format: "%@", date)
+			}
 		}
 		
 		detailLabel?.text = progressStr

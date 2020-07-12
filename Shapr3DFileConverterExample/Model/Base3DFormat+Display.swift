@@ -20,8 +20,7 @@ extension Base3DFormat {
 	}
 	
 	var availableFormatStrs: [String] {
-		let ret = ["shapr"] + available3DFormats.compactMap { $0.fileExtension }.sorted()
-		return ret.map { $0.uppercased() }
+		["shapr"] + available3DFormats.compactMap { $0.fileExtension }.sorted()
 	}
 	
 	var availableFormats: [ShaprOutputFormat] {
