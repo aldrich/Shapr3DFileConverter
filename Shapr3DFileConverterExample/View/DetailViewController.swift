@@ -46,7 +46,7 @@ class DetailViewController: UIViewController {
 			
 			imageView?.image = item.imageFull?.scaledImage
 			
-			if let ongoing = item.formatsUndergoingConversion.first {
+			if let ongoing = item.formatsUndergoingExport.first {
 				
 				let outputFormatStr = ongoing.fileExtension ?? "unknown"
 				
@@ -95,8 +95,8 @@ class DetailViewController: UIViewController {
 	@objc
 	func doConvert(sender: UIBarButtonItem) {
 		
-		guard let fileBaseId = item?.id else {
-			fatalError("a file has no id")
+		guard let item = item, let fileBaseId = item.id else {
+			fatalError("file has no id")
 		}
 		
 		let requestConvert = { [weak self] (format: ShaprOutputFormat) -> Void in
@@ -109,18 +109,25 @@ class DetailViewController: UIViewController {
 		
 		actionSheet.modalPresentationStyle = .popover
 		actionSheet.popoverPresentationController?.barButtonItem = sender
+
+		let availableFormats = item.formatsAvailableForExport
+		// get each format still not found, and then add them as options.
 		
-		actionSheet.addAction(.init(title: "Convert to .obj", style: .default) { _ in
-			requestConvert(.obj)
-		})
+		if availableFormats.count > 0 {
 		
-		actionSheet.addAction(.init(title: "Convert to .step", style: .default) { _ in
-			requestConvert(.step)
-		})
-		
-		actionSheet.addAction(.init(title: "Convert to .stl", style: .default) { _ in
-			requestConvert(.stl)
-		})
+			availableFormats.forEach { format in
+				let formatStr = format.rawValue
+				let title = "Convert to \(formatStr)"
+				let action = UIAlertAction(title: title, style: .default) { _ in
+					requestConvert(format)
+				}
+				actionSheet.addAction(action)
+			}
+		} else {
+			actionSheet.addAction(.init(title: "All available formats exported",
+										style: .default,
+										handler: nil))
+		}
 		
 		actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in })
 		
@@ -136,10 +143,30 @@ class DetailViewController: UIViewController {
 
 
 extension Base3DFormat {
-	var formatsUndergoingConversion: [Derived3DFormat] {
+	var formatsUndergoingExport: [Derived3DFormat] {
 		derivedFormats?.allObjects
 			.compactMap { $0 as? Derived3DFormat }
 			.filter { $0.convertProgress < 1 }
 			?? []
+	}
+	
+	var formatsAvailableForExport: [ShaprOutputFormat] {
+		
+		let availableFormatsList: [ShaprOutputFormat] = [
+			.obj, .step, .stl
+		]
+		
+		// undergoing or completed (progress > 0)
+		
+		let unavailableOptions = derivedFormats?
+			.allObjects
+			.compactMap { $0 as? Derived3DFormat }
+			.filter { $0.convertProgress > 0 }
+			.compactMap { $0.fileExtension }
+			.compactMap { ShaprOutputFormat(rawValue: $0) } ?? []
+		
+		return availableFormatsList.filter {
+			!unavailableOptions.contains($0)
+		}
 	}
 }
