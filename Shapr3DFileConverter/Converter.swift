@@ -42,11 +42,11 @@ public class Converter {
 				totalSecs += Double(delay) / 10.0
 				counter += (1 + Int(arc4random()) % progressBase)
 				let nextCounter = counter
-				
+
 				self?.delay(bySeconds: totalSecs) {
-					
+
 					let value = Float(nextCounter) / Float(total)
-					
+
 					if value < 1 {
 						callback(.progress(value))
 					} else {

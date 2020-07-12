@@ -10,9 +10,7 @@ import UIKit
 import Shapr3DFileConverter
 
 protocol DetailViewControllerDelegate: class {
-	
-	func startConversion(baseFileId id: UUID, to format: ShaprOutputFormat)
-
+	func requestedConversion(baseFileId id: UUID, to format: ShaprOutputFormat)
 }
 
 class DetailViewController: UIViewController {
@@ -78,7 +76,7 @@ class DetailViewController: UIViewController {
 		}
 		
 		let requestConvert = { [weak self] (format: ShaprOutputFormat) -> Void in
-			self?.delegate?.startConversion(baseFileId: fileBaseId, to: format)
+			self?.delegate?.requestedConversion(baseFileId: fileBaseId, to: format)
 		}
 		
 		let actionSheet = UIAlertController(title: nil,

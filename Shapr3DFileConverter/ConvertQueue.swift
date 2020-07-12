@@ -8,10 +8,12 @@
 
 import Foundation
 
+public typealias ProgressInfo = (created: Date?, progress: Float, data: Data?)
+
 public protocol ConvertQueue {
 	
 	func add(id: UUID, data: Data, format: ShaprOutputFormat,
-			 update: @escaping (ConvertProgress) -> Void)
+			 update: @escaping (ProgressInfo) -> Void)
 }
 
 public class ConversionQueue: ConvertQueue {
@@ -25,11 +27,29 @@ public class ConversionQueue: ConvertQueue {
 	}
 	
 	public func add(id: UUID, data: Data, format: ShaprOutputFormat,
-			 update: @escaping (ConvertProgress) -> Void) {
+					update: @escaping (ProgressInfo) -> Void) {
 		
-		converter.convert(data, to: format) { [weak self] progress in
-			self?.queue[id] = progress
-			update(progress)
+		converter.convert(data, to: format) { [weak self] newProgress in
+			
+			self?.queue[id] = newProgress
+
+			var created: Date?
+			var progress: Float = 0
+			var data: Data?
+
+			switch newProgress {
+			case let .completed(outputData):
+				created = Date()
+				progress = 1.0
+				data = outputData
+				break
+			case let .progress(prog):
+				progress = prog
+			case let .error(message):
+				print(message) // TODO: should delete?
+			}
+
+			update((created, progress, data))
 		}
 	}	
 }

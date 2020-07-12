@@ -24,11 +24,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UISplitViewControllerDe
 		navigationController.topViewController?.navigationItem.leftItemsSupplementBackButton = true
 		splitViewController.delegate = self
 
-		let masterNavigationController = splitViewController.viewControllers[0] as! UINavigationController
-		let controller = masterNavigationController.topViewController as! MasterViewController
+//		let masterNavigationController = splitViewController.viewControllers[0] as! UINavigationController
+//		let controller = masterNavigationController.topViewController as! MasterViewController
 		
-		// set up Core Data stack
-		controller.managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
+//		// set up Core Data stack
+//		controller.managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
 	}
 
 	func sceneDidDisconnect(_ scene: UIScene) {
