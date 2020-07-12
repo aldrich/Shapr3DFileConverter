@@ -18,9 +18,17 @@ class DetailViewController: UIViewController {
 
 	@IBOutlet weak var imageView: UIImageView!
 	
-	@IBOutlet weak var detailLabel: UILabel!
+	@IBOutlet weak var detailLabel: UILabel! {
+		didSet {
+			detailLabel.font = FontUtilities.roundedFont(ofSize: 12, weight: .regular)
+		}
+	}
 	
-	@IBOutlet weak var headerLabel: UILabel!
+	@IBOutlet weak var headerLabel: UILabel! {
+		didSet {
+			headerLabel.font = FontUtilities.roundedFont(ofSize: 14, weight: .bold)
+		}
+	}
 	
 	weak var delegate: DetailViewControllerDelegate?
 	
@@ -40,13 +48,15 @@ class DetailViewController: UIViewController {
 	}
 	
 	func configureNavBar() {
-		guard let _ = item else {
+		guard let item = item else {
 			navigationItem.rightBarButtonItem = nil
+			navigationItem.title = nil
 			return
 		}
 		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action,
 															target: self,
 															action: #selector(showExportsOptionsPopup))
+		navigationItem.title = item.filename
 	}
 	
 	// call this when derivedObjects is updated.

@@ -36,6 +36,7 @@
 		BEEED11C24BAD98A0084282B /* AccessoryViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEED11B24BAD98A0084282B /* AccessoryViews.swift */; };
 		BEEED11E24BADFEA0084282B /* TagsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEED11D24BADFEA0084282B /* TagsLayout.swift */; };
 		BEEED12024BAE0520084282B /* BaseLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEED11F24BAE0520084282B /* BaseLayout.swift */; };
+		BEEED12424BB227D0084282B /* FontUtilties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEED12324BB227D0084282B /* FontUtilties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		BEEED11B24BAD98A0084282B /* AccessoryViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryViews.swift; sourceTree = "<group>"; };
 		BEEED11D24BADFEA0084282B /* TagsLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsLayout.swift; sourceTree = "<group>"; };
 		BEEED11F24BAE0520084282B /* BaseLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLayout.swift; sourceTree = "<group>"; };
+		BEEED12324BB227D0084282B /* FontUtilties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontUtilties.swift; sourceTree = "<group>"; };
 		C655D132614495343BD22412 /* Pods-Shapr3DFileConverterExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shapr3DFileConverterExample.release.xcconfig"; path = "Target Support Files/Pods-Shapr3DFileConverterExample/Pods-Shapr3DFileConverterExample.release.xcconfig"; sourceTree = "<group>"; };
 		F3BE0D0D9DCC06C73A3BB407 /* Pods_Shapr3DFileConverterExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shapr3DFileConverterExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -173,7 +175,7 @@
 				BECD0B0124B9BC7000E51BA6 /* ShaprDocument */,
 				BECD0AFB24B9BC6100E51BA6 /* Model */,
 				BEEED10E24BAA98C0084282B /* View */,
-				BECD0AF324B9BC5600E51BA6 /* ImageUtilities.swift */,
+				BEEED12224BB22730084282B /* Utilities */,
 				BECD0AF224B9BBC200E51BA6 /* Assets.xcassets */,
 				BECD0AE024B9BB2E00E51BA6 /* AppDelegate.swift */,
 				BECD0AE224B9BB2E00E51BA6 /* SceneDelegate.swift */,
@@ -242,6 +244,15 @@
 				BEEED11F24BAE0520084282B /* BaseLayout.swift */,
 			);
 			path = "Collection View";
+			sourceTree = "<group>";
+		};
+		BEEED12224BB22730084282B /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				BECD0AF324B9BC5600E51BA6 /* ImageUtilities.swift */,
+				BEEED12324BB227D0084282B /* FontUtilties.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		DA7FBD2E9E3C5FF9F5106145 /* Frameworks */ = {
@@ -464,6 +475,7 @@
 				BECD0B0424B9BC7000E51BA6 /* ShaprDocumentPicker.swift in Sources */,
 				BECD0AF824B9BC5600E51BA6 /* DocumentTableViewCell.swift in Sources */,
 				BECD0AE124B9BB2E00E51BA6 /* AppDelegate.swift in Sources */,
+				BEEED12424BB227D0084282B /* FontUtilties.swift in Sources */,
 				BEEED11C24BAD98A0084282B /* AccessoryViews.swift in Sources */,
 				BEEED11E24BADFEA0084282B /* TagsLayout.swift in Sources */,
 				BEEED12024BAE0520084282B /* BaseLayout.swift in Sources */,

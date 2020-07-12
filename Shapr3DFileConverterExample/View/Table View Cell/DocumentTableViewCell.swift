@@ -20,8 +20,17 @@ class DocumentTableViewCell: UITableViewCell, LayoutDelegate {
 	}
 
 	@IBOutlet weak var iconImageView: UIImageView!
-	@IBOutlet weak var headerLabel: UILabel!
-	@IBOutlet weak var detailLabel: UILabel!
+	@IBOutlet weak var headerLabel: UILabel! {
+		didSet {
+			headerLabel.font = FontUtilities.roundedFont(ofSize: 16, weight: .bold)
+		}
+	}
+	
+	@IBOutlet weak var detailLabel: UILabel! {
+		didSet {
+			detailLabel.font = FontUtilities.roundedFont(ofSize: 12, weight: .regular)
+		}
+	}
 	
 	private let collectionViewProvider = CollectionViewProvider()
 	
