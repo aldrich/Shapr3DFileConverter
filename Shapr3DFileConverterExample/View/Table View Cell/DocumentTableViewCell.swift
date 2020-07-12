@@ -43,12 +43,6 @@ class DocumentTableViewCell: UITableViewCell, LayoutDelegate {
 		return ret
 	}()
 	
-	static var dateFormatter: DateFormatter = {
-		let df = DateFormatter()
-		df.dateFormat = "yyyy-MM-dd HH:mm:ss"
-		return df
-	}()
-	
     override func awakeFromNib() {
         super.awakeFromNib()
 		
@@ -94,7 +88,7 @@ class DocumentTableViewCell: UITableViewCell, LayoutDelegate {
 		
 		headerLabel?.text = file.filename
 		
-		let date = DocumentTableViewCell.dateFormatter.string(from: created)
+		let date = DateUtilities.dateFormatter.string(from: created)
 		
 		var formatProgress = [String: Float]()
 		// get all the formats stored, and their progress

@@ -50,7 +50,8 @@ public class Converter {
 					if value < 1 {
 						callback(.progress(value))
 					} else {
-						callback(.completed(data: Data()))
+						let data = Data(count: input.count)
+						callback(.completed(data: data))
 					}
 				}
 			}

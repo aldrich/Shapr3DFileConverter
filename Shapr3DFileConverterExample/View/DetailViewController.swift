@@ -53,9 +53,19 @@ class DetailViewController: UIViewController {
 			navigationItem.title = nil
 			return
 		}
-		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action,
-															target: self,
-															action: #selector(showExportsOptionsPopup))
+		
+		let editButton = UIBarButtonItem(barButtonSystemItem: .bookmarks,
+										 target: self,
+										 action: #selector(showInfoPopup))
+
+		let actionButton = UIBarButtonItem(barButtonSystemItem: .action,
+										   target: self,
+										   action: #selector(showExportsOptionsPopup))
+		
+		
+		navigationItem.rightBarButtonItems = [
+			actionButton, editButton
+		]
 		navigationItem.title = item.filename
 	}
 	
@@ -115,8 +125,18 @@ class DetailViewController: UIViewController {
 		imageView?.isHidden = !show
 	}
 	
-	@objc
-	func showExportsOptionsPopup(sender: UIBarButtonItem) {
+	@objc func showInfoPopup(sender: UIBarButtonItem) {
+		guard let item = item else {
+			fatalError("file has no id")
+		}
+		let vc = FileInfoTableViewController(style: .insetGrouped)
+		vc.modalPresentationStyle = .popover
+		vc.popoverPresentationController?.barButtonItem = sender
+		vc.item = item
+		present(vc, animated: true)
+	}
+	
+	@objc func showExportsOptionsPopup(sender: UIBarButtonItem) {
 		
 		guard let item = item, let fileBaseId = item.id else {
 			fatalError("file has no id")
