@@ -29,6 +29,10 @@ class MasterViewController: UITableViewController, ShaprDocumentPickerDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		configureView()
+		
+		if dataManager.numberOfRows() == 0 {
+			dataManager.createSampleFiles(5)
+		}
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {

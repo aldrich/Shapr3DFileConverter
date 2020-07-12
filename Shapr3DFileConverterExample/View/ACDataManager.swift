@@ -29,6 +29,7 @@ protocol DataManager {
 	func objectAtIndex(_ index: Int) -> Base3DFormat
 	func numberOfRows() -> Int
 	func deleteAtIndex(_ index: Int)
+	func createSampleFiles(_ n: Int)
 }
 
 class ACDataManager: NSObject, DataManager, NSFetchedResultsControllerDelegate {
@@ -48,14 +49,23 @@ class ACDataManager: NSObject, DataManager, NSFetchedResultsControllerDelegate {
 	override init() {
 		super.init()
 		
-		self.managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
+		self.managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?
+			.persistentContainer.viewContext
 		
+		// this listens for changes to the moc and triggers an event.
 		NotificationCenter
 			.default
 			.addObserver(self,
 						 selector: #selector(managedObjectsDidChangeHandler(notification:)),
 						 name: .NSManagedObjectContextObjectsDidChange,
 						 object: managedObjectContext)
+	}
+	
+	func createSampleFiles(_ n: Int) {
+		let files = (1...n).map { "sample-\($0).shapr" }
+		files.forEach {
+			self.importFile(filename: $0, data: Data())
+		}
 	}
 	
 	@objc fileprivate func managedObjectsDidChangeHandler(notification: NSNotification) {
@@ -93,7 +103,7 @@ class ACDataManager: NSObject, DataManager, NSFetchedResultsControllerDelegate {
 		new3D.data = imgData
 		
 		do {
-			try managedObjectContext?.save()
+			try context.save()
 		} catch {
 			let nserror = error as NSError
 			fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
