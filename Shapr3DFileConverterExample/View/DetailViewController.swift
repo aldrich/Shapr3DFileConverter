@@ -62,11 +62,15 @@ class DetailViewController: UIViewController {
 		headerLabel?.text = item.filename
 		
 		let formats = item.availableFormats(includeShapr: false)
-			.map { $0.rawValue.uppercased() }
+			.map { $0.rawValue }
 			.sorted()
 			.joined(separator: ", ")
 		
-		detailLabel?.text = "Exported formats: \(formats)"
+		if formats.count > 0 {
+			detailLabel?.text = "Exported formats: \(formats)"
+		} else {
+			detailLabel?.text = ""
+		}
 		
 		imageView?.image = item.imageFull?.scaledImage
 		

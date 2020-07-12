@@ -25,7 +25,7 @@ class ContentCell: UICollectionViewCell {
 	}
 	
 	func populate(with format: ShaprOutputFormat) {
-		contentLabel.text = format.rawValue.uppercased()
+		contentLabel.text = format.rawValue
 		backgroundColor = format.color
 	}
 }

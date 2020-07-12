@@ -63,7 +63,7 @@ class DocumentTableViewCell: UITableViewCell, LayoutDelegate {
 			let sizes = items.map { item -> CGSize in
 				let width = Double(self.tagsCollectionView.bounds.width)
 				var size = UIFont.boldSystemFont(ofSize: 10)
-					.sizeOfString(string: item.rawValue.uppercased(),
+					.sizeOfString(string: item.rawValue,
 								  constrainedToWidth: width)
 				size.width += 10
 				size.height += 0
