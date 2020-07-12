@@ -11,7 +11,7 @@ import Shapr3DFileConverter
 
 extension Base3DFormat {
 	
-	var available3DFormats: [Derived3DFormat] {
+	var convertedFormats: [Derived3DFormat] {
 		derivedFormats?
 			.allObjects
 			.compactMap { $0 as? Derived3DFormat }
@@ -20,7 +20,7 @@ extension Base3DFormat {
 	}
 	
 	func availableFormats(includeShapr: Bool = true) -> [ShaprOutputFormat] {
-		var ret = available3DFormats
+		var ret = convertedFormats
 			.compactMap { ShaprOutputFormat(rawValue: $0.fileExtension!) }
 		if includeShapr {
 			ret.insert(.shapr, at: 0)

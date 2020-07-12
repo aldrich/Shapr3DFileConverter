@@ -99,7 +99,7 @@ class DocumentTableViewCell: UITableViewCell, LayoutDelegate {
 		var progressStr: String = ""
 		
 		if let firstKV = firstKV {
-			progressStr = String(format: "Converting %@... %0.1f%%",
+			progressStr = String(format: "Exporting %@... %0.1f%%",
 								 firstKV.key,
 								 firstKV.value * 100.0)
 		} else {

@@ -8,6 +8,7 @@
 
 import UIKit
 import Shapr3DFileConverter
+import MBProgressHUD
 
 protocol DetailViewControllerDelegate: class {
 	func requestedConversion(baseFileId id: UUID, to format: ShaprOutputFormat)
@@ -22,6 +23,8 @@ class DetailViewController: UIViewController {
 	@IBOutlet weak var headerLabel: UILabel!
 	
 	weak var delegate: DetailViewControllerDelegate?
+	
+	var hud: MBProgressHUD?
 	
 	// call this when derived objects is updated.
 	func itemUpdated() {
@@ -43,8 +46,26 @@ class DetailViewController: UIViewController {
 			
 			imageView?.image = item.imageFull?.scaledImage
 			
-			configureNavBar()
+			if let ongoing = item.formatsUndergoingConversion.first {
+				
+				let outputFormatStr = ongoing.fileExtension ?? "unknown"
+				
+				if hud == nil {
+					hud = MBProgressHUD.showAdded(to: view, animated: true)
+					hud?.removeFromSuperViewOnHide = true
+					hud?.mode = .determinate
+					hud?.label.text = "Exporting to \(outputFormatStr) ..."
+				} else {
+					hud?.show(animated: true)
+				}
+				hud?.progress = ongoing.convertProgress
+				
+			} else {
+				hud?.hide(animated: false)
+				hud = nil
+			}
 		}
+		configureNavBar()
 	}
 	
 	func showElements(_ show: Bool) {
@@ -108,9 +129,17 @@ class DetailViewController: UIViewController {
 
 	var item: Base3DFormat? {
 		didSet {
-		    // Update the view.
 		    configureView()
 		}
 	}
 }
 
+
+extension Base3DFormat {
+	var formatsUndergoingConversion: [Derived3DFormat] {
+		derivedFormats?.allObjects
+			.compactMap { $0 as? Derived3DFormat }
+			.filter { $0.convertProgress < 1 }
+			?? []
+	}
+}
