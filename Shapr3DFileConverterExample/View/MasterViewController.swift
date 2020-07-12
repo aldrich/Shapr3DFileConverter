@@ -41,13 +41,19 @@ class MasterViewController: UITableViewController, ShaprDocumentPickerDelegate {
 	}
 	
 	func configureView() {
-		navigationItem.leftBarButtonItem = editButtonItem
+		
+		let editButton = UIBarButtonItem(barButtonSystemItem: .edit,
+										target: self,
+										action: #selector(editPressed(_:)))
+		
+		navigationItem.leftBarButtonItem = editButton
 		
 		let addButton = UIBarButtonItem(barButtonSystemItem: .add,
 										target: self,
 										action: #selector(pickPressed(_:)))
 		
 		navigationItem.rightBarButtonItem = addButton
+		
 		if let split = splitViewController {
 			let controllers = split.viewControllers
 			detailViewController = (controllers[controllers.count-1] as! UINavigationController)
@@ -56,6 +62,10 @@ class MasterViewController: UITableViewController, ShaprDocumentPickerDelegate {
 		
 		documentPicker = ShaprDocumentPicker(presentationController: self,
 											 delegate: self)
+	}
+	
+	@objc func editPressed(_ sender: Any) {
+		isEditing = !isEditing
 	}
 	
 	@objc func pickPressed(_ sender: Any) {

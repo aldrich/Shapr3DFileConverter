@@ -40,6 +40,7 @@
 		BEEED12624BB3DE60084282B /* FileInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEED12524BB3DE60084282B /* FileInfoTableViewController.swift */; };
 		BEEED12824BB434A0084282B /* DateUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEED12724BB434A0084282B /* DateUtilities.swift */; };
 		BEEED12A24BB47810084282B /* UnitUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEED12924BB47810084282B /* UnitUtilities.swift */; };
+		BEEED12C24BB4D6C0084282B /* AppDelegate+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEED12B24BB4D6C0084282B /* AppDelegate+Appearance.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		BEEED12524BB3DE60084282B /* FileInfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileInfoTableViewController.swift; sourceTree = "<group>"; };
 		BEEED12724BB434A0084282B /* DateUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtilities.swift; sourceTree = "<group>"; };
 		BEEED12924BB47810084282B /* UnitUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitUtilities.swift; sourceTree = "<group>"; };
+		BEEED12B24BB4D6C0084282B /* AppDelegate+Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Appearance.swift"; sourceTree = "<group>"; };
 		C655D132614495343BD22412 /* Pods-Shapr3DFileConverterExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shapr3DFileConverterExample.release.xcconfig"; path = "Target Support Files/Pods-Shapr3DFileConverterExample/Pods-Shapr3DFileConverterExample.release.xcconfig"; sourceTree = "<group>"; };
 		F3BE0D0D9DCC06C73A3BB407 /* Pods_Shapr3DFileConverterExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shapr3DFileConverterExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -184,6 +186,7 @@
 				BEEED12224BB22730084282B /* Utilities */,
 				BECD0AF224B9BBC200E51BA6 /* Assets.xcassets */,
 				BECD0AE024B9BB2E00E51BA6 /* AppDelegate.swift */,
+				BEEED12B24BB4D6C0084282B /* AppDelegate+Appearance.swift */,
 				BECD0AE224B9BB2E00E51BA6 /* SceneDelegate.swift */,
 				BECD0AE624B9BB2E00E51BA6 /* Main.storyboard */,
 				BECD0AEB24B9BB2E00E51BA6 /* LaunchScreen.storyboard */,
@@ -497,6 +500,7 @@
 				BECD0AF724B9BC5600E51BA6 /* ImageUtilities.swift in Sources */,
 				BECD0AE324B9BB2E00E51BA6 /* SceneDelegate.swift in Sources */,
 				BEEED11824BAB1BB0084282B /* ACDataManager.swift in Sources */,
+				BEEED12C24BB4D6C0084282B /* AppDelegate+Appearance.swift in Sources */,
 				BECD0AFF24B9BC6100E51BA6 /* ShaprFile+CoreData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
