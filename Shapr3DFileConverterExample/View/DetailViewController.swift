@@ -131,7 +131,7 @@ class DetailViewController: UIViewController {
 		}
 		
 		let actionSheet = UIAlertController(title: nil,
-											message: "Select a format to convert to",
+											message: "Select a format to export to",
 											preferredStyle: .actionSheet)
 		
 		actionSheet.modalPresentationStyle = .popover
@@ -144,7 +144,7 @@ class DetailViewController: UIViewController {
 		
 			availableFormats.forEach { format in
 				let formatStr = format.rawValue
-				let title = "Convert to \(formatStr)"
+				let title = "Export to \(formatStr)"
 				let action = UIAlertAction(title: title, style: .default) { _ in
 					requestConvert(format)
 				}
