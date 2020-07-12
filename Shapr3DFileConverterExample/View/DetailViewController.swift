@@ -89,7 +89,8 @@ class DetailViewController: UIViewController {
 		if formats.count > 0 {
 			detailLabel?.text = "Exported formats: \(formats)"
 		} else {
-			detailLabel?.text = ""
+			detailLabel?.text = String(format: "Created: %@",
+									   DateUtilities.dateFormatter.string(from: item.created!) )
 		}
 		
 		imageView?.image = item.imageFull?.scaledImage
