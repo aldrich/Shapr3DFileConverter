@@ -42,11 +42,7 @@ class MasterViewController: UITableViewController, ShaprDocumentPickerDelegate {
 	
 	func configureView() {
 		
-		let editButton = UIBarButtonItem(barButtonSystemItem: .edit,
-										target: self,
-										action: #selector(editPressed(_:)))
-		
-		navigationItem.leftBarButtonItem = editButton
+		navigationItem.leftBarButtonItem = editButtonItem
 		
 		let addButton = UIBarButtonItem(barButtonSystemItem: .add,
 										target: self,
@@ -62,10 +58,6 @@ class MasterViewController: UITableViewController, ShaprDocumentPickerDelegate {
 		
 		documentPicker = ShaprDocumentPicker(presentationController: self,
 											 delegate: self)
-	}
-	
-	@objc func editPressed(_ sender: Any) {
-		isEditing = !isEditing
 	}
 	
 	@objc func pickPressed(_ sender: Any) {
