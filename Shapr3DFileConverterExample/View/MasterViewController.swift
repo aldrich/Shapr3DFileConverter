@@ -53,6 +53,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
 	
 	@objc fileprivate func managedObjectsDidChangeHandler(notification: NSNotification) {
 		tableView.reloadData()
+		detailViewController?.itemUpdated()
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -303,7 +304,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
 
 extension MasterViewController: DetailViewControllerDelegate {
 	
-	func startConversion(baseFileId id: UUID, to format: FileExtension) {
+	func startConversion(baseFileId id: UUID, to format: ShaprOutputFormat) {
 		
 		guard let file = getFileForID(baseFileId: id),
 			let data = file.data else {

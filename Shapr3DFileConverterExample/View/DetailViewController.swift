@@ -10,7 +10,9 @@ import UIKit
 import Shapr3DFileConverter
 
 protocol DetailViewControllerDelegate: class {
-	func startConversion(baseFileId id: UUID, to format: FileExtension)
+	
+	func startConversion(baseFileId id: UUID, to format: ShaprOutputFormat)
+
 }
 
 class DetailViewController: UIViewController {
@@ -22,6 +24,11 @@ class DetailViewController: UIViewController {
 	@IBOutlet weak var headerLabel: UILabel!
 	
 	weak var delegate: DetailViewControllerDelegate?
+	
+	// call this when derived objects is updated.
+	func itemUpdated() {
+		configureView()
+	}
 	
 	func configureView() {
 		if let item = item {
@@ -66,7 +73,7 @@ class DetailViewController: UIViewController {
 			fatalError("a file has no id")
 		}
 		
-		let requestConvert = { [weak self] (format: FileExtension) -> Void in
+		let requestConvert = { [weak self] (format: ShaprOutputFormat) -> Void in
 			self?.delegate?.startConversion(baseFileId: fileBaseId, to: format)
 		}
 		

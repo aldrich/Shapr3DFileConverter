@@ -20,7 +20,7 @@ public class Converter {
 	public init() {}
 	
 	// asynchronously call progress
-	public func convert(_ input: Data, to type: FileExtension,
+	public func convert(_ input: Data, to type: ShaprOutputFormat,
 						callback: @escaping ((ConvertProgress) -> Void)) {
 		
 		let queue = DispatchQueue(label: "conversion", qos: .userInitiated)

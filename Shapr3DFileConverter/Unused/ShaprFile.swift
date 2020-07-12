@@ -1,5 +1,5 @@
 //
-//  DerivedFileFormat.swift
+//  Models.swift
 //  Shapr3DFileConverter
 //
 //  Created by Aldrich Co on 7/11/20.
@@ -9,32 +9,40 @@
 import Foundation
 import UIKit
 
-public class DerivedFileFormat: NSObject {
+public class ShaprFile {
 	
 	public var id: UUID
+	
+	public var filename: String
 	
 	public var size: Int32
 	
 	public var created: Date
 	
-	public var fileExtension: FileExtension
+	public var image: UIImage?
+	
+	public var thumbnail: UIImage?
 	
 	public var data: Data?
 	
-	@objc dynamic public var convertProgress: CGFloat
+	public var derivedFormats: [DerivedFileFormat]
 	
 	public init(id: UUID,
+				filename: String,
 				size: Int32,
 				created: Date,
-				fileExtension: FileExtension,
+				image: UIImage?,
+				thumbnail: UIImage?,
 				data: Data?,
-				convertProgress: CGFloat) {
+				derivedFormats: [DerivedFileFormat]) {
 		
 		self.id = id
+		self.filename = filename
 		self.size = size
 		self.created = created
-		self.fileExtension = fileExtension
+		self.image = image
+		self.thumbnail = thumbnail
 		self.data = data
-		self.convertProgress = convertProgress
+		self.derivedFormats = derivedFormats
 	}
 }

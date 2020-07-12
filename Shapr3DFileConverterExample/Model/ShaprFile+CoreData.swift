@@ -31,7 +31,7 @@ extension ShaprFile {
 			DerivedFileFormat(id: file.id ?? UUID(),
 							  size: file.size,
 							  created: file.created ?? Date(),
-							  fileExtension: FileExtension(rawValue: file.fileExtension!)!,
+							  fileExtension: ShaprOutputFormat(rawValue: file.fileExtension!)!,
 							  data: file.data,
 							  convertProgress: CGFloat(file.convertProgress))
 		} ?? []

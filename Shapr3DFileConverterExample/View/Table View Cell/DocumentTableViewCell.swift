@@ -14,8 +14,6 @@ class DocumentTableViewCell: UITableViewCell {
 	@IBOutlet weak var headerLabel: UILabel!
 	@IBOutlet weak var detailLabel: UILabel!
 	
-	
-	
     override func awakeFromNib() {
         super.awakeFromNib()
 		

@@ -10,7 +10,7 @@ import Foundation
 
 public protocol ConvertQueue {
 	
-	func add(id: UUID, data: Data, format: FileExtension,
+	func add(id: UUID, data: Data, format: ShaprOutputFormat,
 			 update: @escaping (ConvertProgress) -> Void)
 }
 
@@ -24,7 +24,7 @@ public class ConversionQueue: ConvertQueue {
 		self.converter = converter
 	}
 	
-	public func add(id: UUID, data: Data, format: FileExtension,
+	public func add(id: UUID, data: Data, format: ShaprOutputFormat,
 			 update: @escaping (ConvertProgress) -> Void) {
 		
 		converter.convert(data, to: format) { [weak self] progress in
