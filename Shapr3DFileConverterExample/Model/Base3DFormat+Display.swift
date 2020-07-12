@@ -12,17 +12,19 @@ import Shapr3DFileConverter
 extension Base3DFormat {
 	
 	var available3DFormats: [Derived3DFormat] {
-		derivedFormats?.allObjects.compactMap {
-			$0 as? Derived3DFormat
-		} ?? []
+		derivedFormats?
+			.allObjects
+			.compactMap { $0 as? Derived3DFormat }
+			.filter { $0.convertProgress >= 1 }
+			?? []
 	}
 	
 	var availableFormatStrs: [String] {
-		let ret = available3DFormats.compactMap { $0.fileExtension } + [".shapr"]
-		return ret.sorted()
+		let ret = ["shapr"] + available3DFormats.compactMap { $0.fileExtension }.sorted()
+		return ret.map { $0.uppercased() }
 	}
 	
 	var availableFormats: [ShaprOutputFormat] {
-		return availableFormatStrs.compactMap { ShaprOutputFormat(rawValue: $0) }
+		availableFormatStrs.compactMap { ShaprOutputFormat(rawValue: $0) }
 	}
 }

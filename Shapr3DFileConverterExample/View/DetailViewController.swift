@@ -35,7 +35,11 @@ class DetailViewController: UIViewController {
 			showElements(true)
 			
 			headerLabel?.text = item.filename
-			detailLabel?.text = "\(item.size) bytes"
+			
+			// detailLabel?.text = "\(item.size) bytes"
+			let formats = item.availableFormatStrs.joined(separator: ", ")
+			detailLabel?.text = "Formats: \(formats)"
+			
 			imageView?.image = item.imageFull?.scaledImage
 			
 			configureNavBar()

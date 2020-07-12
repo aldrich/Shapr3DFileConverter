@@ -164,10 +164,9 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		if let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? DocumentTableViewCell {
 			let file = fetchedResultsController.object(at: indexPath)
-			configureCell(cell, base3dFile: file)
+			cell.configureWith(file)
 			return cell
 		}
-		
 		return UITableViewCell()
 	}
 
@@ -190,43 +189,6 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
 		        fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
 		    }
 		}
-	}
-
-	func configureCell(_ cell: DocumentTableViewCell, base3dFile file: Base3DFormat) {
-		
-		guard let created = file.created,
-			let _ = file.derivedFormats,
-			let thumbnail = file.imageThumbnail else {
-				fatalError("missing values for required properties")
-		}
-		
-		cell.headerLabel?.text = file.filename
-		
-		let date = self.dateFormatter.string(from: created)
-
-		var formatProgress = [String: Float]()
-		// get all the formats stored, and their progress
-		file.derivedFormats?.forEach({ (df) in
-			if let df = df as? Derived3DFormat  {
-				formatProgress[df.fileExtension!] = df.convertProgress
-			}
-		})
-		
-		// get the first one not 1.
-		let firstKV = formatProgress.filter { $0.value < 1 }.first
-		
-		var progressStr: String = ""
-		
-		if let firstKV = firstKV {
-			progressStr = String(format: "converting %@ - %0.1f%%",
-								 firstKV.key,
-								 firstKV.value * 100.0)
-		} else {
-			progressStr = date
-		}
-		
-		cell.detailLabel?.text = progressStr
-		cell.imageView?.image = thumbnail.scaledImage
 	}
 
 	// MARK: - Fetched results controller
