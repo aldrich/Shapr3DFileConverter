@@ -16,7 +16,17 @@ protocol DetailViewControllerDelegate: class {
 
 class DetailViewController: UIViewController {
 
-	@IBOutlet weak var imageView: UIImageView!
+	@IBOutlet weak var imageView: UIImageView! {
+		didSet {
+			imageView.layer.cornerRadius = 10
+		}
+	}
+	
+	@IBOutlet weak var headerLabel: UILabel! {
+		didSet {
+			headerLabel.font = FontUtilities.roundedFont(ofSize: 14, weight: .bold)
+		}
+	}
 	
 	@IBOutlet weak var detailLabel: UILabel! {
 		didSet {
@@ -24,9 +34,9 @@ class DetailViewController: UIViewController {
 		}
 	}
 	
-	@IBOutlet weak var headerLabel: UILabel! {
+	@IBOutlet weak var creditsLabel: UILabel! {
 		didSet {
-			headerLabel.font = FontUtilities.roundedFont(ofSize: 14, weight: .bold)
+			creditsLabel.font = FontUtilities.roundedFont(ofSize: 10, weight: .regular)
 		}
 	}
 	
@@ -124,6 +134,7 @@ class DetailViewController: UIViewController {
 		headerLabel?.isHidden = !show
 		detailLabel?.isHidden = !show
 		imageView?.isHidden = !show
+		creditsLabel?.isHidden = !show
 	}
 	
 	@objc func showInfoPopup(sender: UIBarButtonItem) {

@@ -36,20 +36,26 @@
                                 <rect key="frame" x="20" y="70" width="728" height="934"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="vxF-Fn-nVD">
-                                        <rect key="frame" x="224" y="0.0" width="280" height="883"/>
+                                        <rect key="frame" x="224" y="0.0" width="280" height="862"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="1000" text="Header" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0W0-sz-6zQ" userLabel="Header Label">
-                                        <rect key="frame" x="332.5" y="888" width="63.5" height="21.5"/>
+                                        <rect key="frame" x="332.5" y="867" width="63.5" height="21.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" text="Detail" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="0XM-y9-sOw" userLabel="Detail Label">
-                                        <rect key="frame" x="343.5" y="914.5" width="41.5" height="19.5"/>
+                                        <rect key="frame" x="343.5" y="893.5" width="41.5" height="19.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Image credits to unsplash.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BBO-To-eco" userLabel="Credits Label">
+                                        <rect key="frame" x="271.5" y="918" width="185.5" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -67,6 +73,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM"/>
                     <connections>
+                        <outlet property="creditsLabel" destination="BBO-To-eco" id="xpl-Oz-He1"/>
                         <outlet property="detailLabel" destination="0XM-y9-sOw" id="Hwt-CX-YmP"/>
                         <outlet property="headerLabel" destination="0W0-sz-6zQ" id="Kwc-uM-CoI"/>
                         <outlet property="imageView" destination="vxF-Fn-nVD" id="xbP-bR-Sbo"/>
