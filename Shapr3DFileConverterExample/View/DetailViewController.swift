@@ -26,54 +26,12 @@ class DetailViewController: UIViewController {
 	
 	var hud: MBProgressHUD?
 	
-	// call this when derived objects is updated.
-	func itemUpdated() {
-		configureView()
-	}
-	
-	func configureView() {
-		if let item = item {
-			showElements(true)
-			
-			headerLabel?.text = item.filename
-			
-			// detailLabel?.text = "\(item.size) bytes"
-			let formats = item.availableFormats(includeShapr: true)
-				.map { $0.rawValue.uppercased() }
-				.joined(separator: ", ")
-
-			detailLabel?.text = "Formats: \(formats)"
-			
-			imageView?.image = item.imageFull?.scaledImage
-			
-			if let ongoing = item.formatsUndergoingExport.first {
-				
-				let outputFormatStr = ongoing.fileExtension ?? "unknown"
-				
-				if hud == nil {
-					hud = MBProgressHUD.showAdded(to: view, animated: true)
-					hud?.removeFromSuperViewOnHide = true
-					hud?.mode = .determinate
-					hud?.label.text = "Exporting to \(outputFormatStr) ..."
-				} else {
-					hud?.show(animated: true)
-				}
-				hud?.progress = ongoing.convertProgress
-				
-			} else {
-				hud?.hide(animated: false)
-				hud = nil
-			}
+	var item: Base3DFormat? {
+		didSet {
+			configureNavBar()
 		}
-		configureNavBar()
 	}
 	
-	func showElements(_ show: Bool) {
-		headerLabel?.isHidden = !show
-		detailLabel?.isHidden = !show
-		imageView?.isHidden = !show
-	}
-
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		showElements(false)
@@ -86,17 +44,72 @@ class DetailViewController: UIViewController {
 			navigationItem.rightBarButtonItem = nil
 			return
 		}
-		
 		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action,
 															target: self,
-															action: #selector(doConvert))
+															action: #selector(showExportsOptionsPopup))
+	}
+	
+	// call this when derivedObjects is updated.
+	func itemUpdated() {
+		configureView()
+	}
+	
+	func configureView() {
+		guard let item = item else { return }
+		
+		showElements(true)
+		
+		headerLabel?.text = item.filename
+		
+		let formats = item.availableFormats(includeShapr: false)
+			.map { $0.rawValue.uppercased() }
+			.sorted()
+			.joined(separator: ", ")
+		
+		detailLabel?.text = "Exported formats: \(formats)"
+		
+		imageView?.image = item.imageFull?.scaledImage
+		
+		if let ongoing = item.formatsUndergoingExport.first {
+			// there's an ongoing conversion
+			let outputFormatStr = ongoing.fileExtension ?? "unknown"
+			if hud == nil {
+				hud = MBProgressHUD.showAdded(to: view, animated: true)
+				hud?.removeFromSuperViewOnHide = true
+				hud?.mode = .determinate
+				hud?.label.text = "Exporting to \(outputFormatStr) ..."
+			} else {
+				hud?.show(animated: true)
+			}
+			hud?.progress = ongoing.convertProgress
+		} else {
+			hud?.hide(animated: false)
+			hud = nil
+		}
+	}
+	
+	var hasOngoingConversion: Bool {
+		guard let item = item else {
+			return false
+		}
+		return item.formatsUndergoingExport.count > 0
+	}
+	
+	func showElements(_ show: Bool) {
+		headerLabel?.isHidden = !show
+		detailLabel?.isHidden = !show
+		imageView?.isHidden = !show
 	}
 	
 	@objc
-	func doConvert(sender: UIBarButtonItem) {
+	func showExportsOptionsPopup(sender: UIBarButtonItem) {
 		
 		guard let item = item, let fileBaseId = item.id else {
 			fatalError("file has no id")
+		}
+		
+		guard item.formatsUndergoingExport.count < 1 else {
+			return
 		}
 		
 		let requestConvert = { [weak self] (format: ShaprOutputFormat) -> Void in
@@ -129,15 +142,10 @@ class DetailViewController: UIViewController {
 										handler: nil))
 		}
 		
-		actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in })
+		actionSheet.addAction(UIAlertAction(title: "Cancel",
+											style: .cancel) { _ in })
 		
 		present(actionSheet, animated: true)
-	}
-
-	var item: Base3DFormat? {
-		didSet {
-		    configureView()
-		}
 	}
 }
 

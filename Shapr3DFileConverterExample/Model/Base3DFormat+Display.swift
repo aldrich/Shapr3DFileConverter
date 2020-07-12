@@ -21,7 +21,9 @@ extension Base3DFormat {
 	
 	func availableFormats(includeShapr: Bool = true) -> [ShaprOutputFormat] {
 		var ret = convertedFormats
-			.compactMap { ShaprOutputFormat(rawValue: $0.fileExtension!) }
+			.compactMap { $0.fileExtension }
+			.sorted()
+			.compactMap { ShaprOutputFormat(rawValue: $0) }
 		if includeShapr {
 			ret.insert(.shapr, at: 0)
 		}
