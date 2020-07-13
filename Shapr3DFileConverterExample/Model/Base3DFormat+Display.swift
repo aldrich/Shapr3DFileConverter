@@ -29,4 +29,31 @@ extension Base3DFormat {
 		}
 		return ret
 	}
+	
+	var formatsUndergoingExport: [Derived3DFormat] {
+		derivedFormats?.allObjects
+			.compactMap { $0 as? Derived3DFormat }
+			.filter { $0.convertProgress < 1 }
+			?? []
+	}
+	
+	var formatsAvailableForExport: [ShaprOutputFormat] {
+		
+		let availableFormatsList: [ShaprOutputFormat] = [
+			.obj, .step, .stl
+		]
+		
+		// undergoing or completed (progress > 0)
+		
+		let unavailableOptions = derivedFormats?
+			.allObjects
+			.compactMap { $0 as? Derived3DFormat }
+			.filter { $0.convertProgress > 0 }
+			.compactMap { $0.fileExtension }
+			.compactMap { ShaprOutputFormat(rawValue: $0) } ?? []
+		
+		return availableFormatsList.filter {
+			!unavailableOptions.contains($0)
+		}
+	}
 }

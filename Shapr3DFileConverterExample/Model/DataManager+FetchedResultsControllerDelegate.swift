@@ -28,7 +28,7 @@ extension ShaprDataManager: NSFetchedResultsControllerDelegate {
 		
 		let aFetchedResultsController =
 			NSFetchedResultsController(fetchRequest: fetchRequest,
-									   managedObjectContext: self.managedObjectContext!,
+									   managedObjectContext: managedObjectContext,
 									   sectionNameKeyPath: nil, cacheName: "Master")
 		
 		aFetchedResultsController.delegate = self

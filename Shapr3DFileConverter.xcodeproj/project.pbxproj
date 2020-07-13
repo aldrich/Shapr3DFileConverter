@@ -10,6 +10,7 @@
 		84A43901E9C4AF45C7349F55 /* Pods_Shapr3DFileConverterExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3BE0D0D9DCC06C73A3BB407 /* Pods_Shapr3DFileConverterExample.framework */; };
 		BE167EAF24BCAB6F00DDBA1B /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE167EAE24BCAB6F00DDBA1B /* DataManager.swift */; };
 		BE167EB324BCAE5A00DDBA1B /* DataManager+FetchedResultsControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE167EB224BCAE5A00DDBA1B /* DataManager+FetchedResultsControllerDelegate.swift */; };
+		BE167EB524BCB52C00DDBA1B /* ColorUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE167EB424BCB52C00DDBA1B /* ColorUtilities.swift */; };
 		BECD0ABF24B9B3E000E51BA6 /* Shapr3DFileConverter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BECD0AB524B9B3E000E51BA6 /* Shapr3DFileConverter.framework */; };
 		BECD0AC424B9B3E000E51BA6 /* Shapr3DFileConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECD0AC324B9B3E000E51BA6 /* Shapr3DFileConverterTests.swift */; };
 		BECD0AC624B9B3E000E51BA6 /* Shapr3DFileConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = BECD0AB824B9B3E000E51BA6 /* Shapr3DFileConverter.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -55,6 +56,7 @@
 		3DE4884A136EAD94FF87DEF0 /* Pods-Shapr3DFileConverterExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shapr3DFileConverterExample.debug.xcconfig"; path = "Target Support Files/Pods-Shapr3DFileConverterExample/Pods-Shapr3DFileConverterExample.debug.xcconfig"; sourceTree = "<group>"; };
 		BE167EAE24BCAB6F00DDBA1B /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		BE167EB224BCAE5A00DDBA1B /* DataManager+FetchedResultsControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataManager+FetchedResultsControllerDelegate.swift"; sourceTree = "<group>"; };
+		BE167EB424BCB52C00DDBA1B /* ColorUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorUtilities.swift; sourceTree = "<group>"; };
 		BECD0AB524B9B3E000E51BA6 /* Shapr3DFileConverter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Shapr3DFileConverter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BECD0AB824B9B3E000E51BA6 /* Shapr3DFileConverter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shapr3DFileConverter.h; sourceTree = "<group>"; };
 		BECD0AB924B9B3E000E51BA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				BECD0AF324B9BC5600E51BA6 /* ImageUtilities.swift */,
+				BE167EB424BCB52C00DDBA1B /* ColorUtilities.swift */,
 				BEEED12324BB227D0084282B /* FontUtilties.swift */,
 				BEEED12724BB434A0084282B /* DateUtilities.swift */,
 				BEEED12924BB47810084282B /* UnitUtilities.swift */,
@@ -478,6 +481,7 @@
 				BE167EAF24BCAB6F00DDBA1B /* DataManager.swift in Sources */,
 				BEEED12624BB3DE60084282B /* FileInfoTableViewController.swift in Sources */,
 				BEEED11C24BAD98A0084282B /* AccessoryViews.swift in Sources */,
+				BE167EB524BCB52C00DDBA1B /* ColorUtilities.swift in Sources */,
 				BEEED11E24BADFEA0084282B /* TagsLayout.swift in Sources */,
 				BEEED12024BAE0520084282B /* BaseLayout.swift in Sources */,
 				BECD0B0524B9BC7000E51BA6 /* ShaprDocument.swift in Sources */,
