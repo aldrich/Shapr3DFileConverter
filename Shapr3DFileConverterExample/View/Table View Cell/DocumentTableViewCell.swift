@@ -124,12 +124,4 @@ class DocumentTableViewCell: UITableViewCell, LayoutDelegate {
 	func cellSize(indexPath: IndexPath) -> CGSize {
 		return cellSizes[indexPath.section][indexPath.row]
 	}
-	
-	func headerHeight(indexPath: IndexPath) -> CGFloat {
-		return 0
-	}
-	
-	func footerHeight(indexPath: IndexPath) -> CGFloat {
-		return 0
-	}
 }
