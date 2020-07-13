@@ -58,7 +58,7 @@ class DetailViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		showElements(false)
-		configureView()
+		configureView(onLoad: true)
 		configureNavBar()
 	}
 	
@@ -89,14 +89,14 @@ class DetailViewController: UIViewController {
 		configureView()
 	}
 	
-	func configureView() {
+	func configureView(onLoad: Bool = false) {
 		
 		guard let item = item else {
 			showElements(false)
 			return
 		}
 		
-		showElements(true)
+		showElements(true, animate: onLoad)
 		
 		headerLabel?.text = item.filename
 		
@@ -130,18 +130,30 @@ class DetailViewController: UIViewController {
 		hud?.progress = formatUndergoingConversion.convertProgress
 	}
 	
-	private func showElements(_ show: Bool) {
+	private func showElements(_ show: Bool, animate: Bool = false) {
 		headerLabel?.isHidden = !show
 		detailLabel?.isHidden = !show
 		creditsLabel?.isHidden = !show
 		
 		if show {
 			imageView.alpha = 0
-			UIView.animate(withDuration: 0.3) {
-				self.imageView?.alpha = 1
+			if animate {
+				UIView.animate(withDuration: 0.3) {
+					self.imageView?.alpha = 1
+				}
+			} else {
+				imageView.alpha = 1
+			}
+		} else {
+			imageView.alpha = 1
+			if animate {
+				UIView.animate(withDuration: 0.3) {
+					self.imageView?.alpha = 0
+				}
+			} else {
+				imageView.alpha = 0
 			}
 		}
-		// imageView?.isHidden = !show
 	}
 	
 	@objc func showInfoPopup(sender: UIBarButtonItem) {
