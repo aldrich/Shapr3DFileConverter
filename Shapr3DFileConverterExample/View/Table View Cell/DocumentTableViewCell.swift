@@ -49,6 +49,10 @@ class DocumentTableViewCell: UITableViewCell, LayoutDelegate {
 		tagsCollectionView.dataSource = collectionViewProvider
 		tagsCollectionView.collectionViewLayout = layout
 		
+		let backgroundView = UIView()
+		backgroundView.backgroundColor = UIColor(white: 0.5, alpha: 0.1)
+		selectedBackgroundView = backgroundView
+		
 		layout.delegate = self
     }
 	
