@@ -8,6 +8,7 @@
 
 import UIKit
 import Shapr3DFileConverter
+import CoreData
 
 class MasterViewController: UITableViewController {
 
@@ -20,8 +21,13 @@ class MasterViewController: UITableViewController {
 								   delegate: self)
 	}()
 	
+	var managedObjectContext: NSManagedObjectContext {
+		return (UIApplication.shared.delegate as! AppDelegate)
+			.persistentContainer.viewContext
+	}
+	
 	lazy var dataManager: DataManager = {
-		let manager = ShaprDataManager()
+		let manager = ShaprDataManager(managedObjectContext: managedObjectContext)
 		manager.delegate = self
 		return manager
 	}()
@@ -37,6 +43,10 @@ class MasterViewController: UITableViewController {
 		configureNavigationButtonItems()
 		configureSplitViewController()
 		
+		tryCreateSampleFilesIfEmpty()
+	}
+	
+	private func tryCreateSampleFilesIfEmpty() {
 		if dataManager.count() == 0 {
 			addSampleFiles(5) { (index, isThumbnail) -> Data? in
 				ImageUtilities.imageData(hashValue: index,
@@ -45,10 +55,9 @@ class MasterViewController: UITableViewController {
 		}
 	}
 	
-	// TODO: move outside
 	// where Bool param in imageProvider represents if image requested is
 	// for the thumbnail.
-	func addSampleFiles(_ n: Int, imageProvider: (Int, Bool) -> Data?) {
+	private func addSampleFiles(_ n: Int, imageProvider: (Int, Bool) -> Data?) {
 		let randomData = { () -> Data in
 			let randomCount = Int.random(in: 128...1024)
 			return Data(count: randomCount)
@@ -126,7 +135,7 @@ extension MasterViewController: ShaprDocumentPickerDelegate {
 				let filename = doc.fileURL.lastPathComponent
 				
 				// need to be the same for both image and thumb
-				let hashValue = doc.fileURL.hashValue
+				let hashValue = Int(arc4random())
 				
 				let imageData = ImageUtilities
 					.imageData(hashValue: hashValue)

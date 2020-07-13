@@ -66,9 +66,9 @@ class DocumentTableViewCell: UITableViewCell, LayoutDelegate {
 		collectionViewProvider.items.forEach { items in
 			let sizes = items.map { item -> CGSize in
 				let width = Double(self.tagsCollectionView.bounds.width)
-				var size = UIFont.boldSystemFont(ofSize: 10)
-					.sizeOfString(string: item.rawValue,
-								  constrainedToWidth: width)
+				var size = FontUtilities.sizeOfString(string: item.rawValue,
+													  font: .boldSystemFont(ofSize: 10),
+													  constrainedToWidth: width)
 				size.width += 10
 				size.height += 0
 				return size
@@ -76,7 +76,6 @@ class DocumentTableViewCell: UITableViewCell, LayoutDelegate {
 			cellSizes.append(sizes)
 		}
 	}
-
 	
 	func configureWith(_ file: Base3DFormat) {
 		
@@ -128,16 +127,5 @@ class DocumentTableViewCell: UITableViewCell, LayoutDelegate {
 	
 	func footerHeight(indexPath: IndexPath) -> CGFloat {
 		return 0
-	}
-}
-
-extension UIFont {
-	func sizeOfString (string: String, constrainedToWidth width: Double) -> CGSize {
-		return NSString(string: string)
-			.boundingRect(with:
-				CGSize(width: width, height: Double.greatestFiniteMagnitude),
-						  options: NSStringDrawingOptions.usesLineFragmentOrigin,
-						  attributes: [NSAttributedString.Key.font: self],
-						  context: nil).size
 	}
 }

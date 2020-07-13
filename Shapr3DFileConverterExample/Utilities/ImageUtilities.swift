@@ -83,8 +83,6 @@ extension UIImage {
 		UIGraphicsEndImageContext()
 		return roundedImage
 	}
-	
-	
 }
 
 extension Data {

@@ -55,7 +55,8 @@ class ShaprDataManager: NSObject, DataManager {
 	
 	weak var delegate: DataManagerDelegate?
 	
-	var managedObjectContext: NSManagedObjectContext? = nil
+	// same moc used by `_fetchedResultsController`
+	var managedObjectContext: NSManagedObjectContext
 	
 	var _fetchedResultsController:
 		NSFetchedResultsController<Base3DFormat>? = nil
@@ -68,15 +69,12 @@ class ShaprDataManager: NSObject, DataManager {
 							object: managedObjectContext)
 	}
 	
-	override init() {
+	init(managedObjectContext: NSManagedObjectContext) {
+		self.managedObjectContext = managedObjectContext
 		super.init()
 		
-		self.managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?
-			.persistentContainer.viewContext
-		
 		// this listens for changes to the moc and triggers an event.
-		NotificationCenter
-			.default
+		NotificationCenter.default
 			.addObserver(self,
 						 selector: #selector(managedObjectsDidChangeHandler(notification:)),
 						 name: .NSManagedObjectContextObjectsDidChange,
@@ -95,7 +93,7 @@ class ShaprDataManager: NSObject, DataManager {
 		let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Base3DFormat")
 		fetch.predicate = NSPredicate(format: "id == %@", id.uuidString)
 		do {
-			if let results = try managedObjectContext!.fetch(fetch) as? [Base3DFormat] {
+			if let results = try managedObjectContext.fetch(fetch) as? [Base3DFormat] {
 				return results.first
 			}
 		} catch {
@@ -109,11 +107,7 @@ class ShaprDataManager: NSObject, DataManager {
 					imageData: Data?,
 					thumbnailData: Data?) {
 		
-		guard let context = self.managedObjectContext else {
-			fatalError("unable to get managed object context from FRC")
-		}
-		
-		let new3D = Base3DFormat(context: context)
+		let new3D = Base3DFormat(context: managedObjectContext)
 		new3D.id = UUID()
 		
 		new3D.filename = filename
@@ -125,7 +119,7 @@ class ShaprDataManager: NSObject, DataManager {
 		new3D.data = imageData
 		
 		do {
-			try context.save()
+			try managedObjectContext.save()
 			print("import file \(filename) done.")
 		} catch {
 			let nserror = error as NSError
@@ -134,10 +128,10 @@ class ShaprDataManager: NSObject, DataManager {
 	}
 	
 	func updateConvertProgress(file: Base3DFormat,
-							targetFormat format: ShaprOutputFormat,
-							progress: Float,
-							created: Date?,
-							data: Data?) {
+							   targetFormat format: ShaprOutputFormat,
+							   progress: Float,
+							   created: Date?,
+							   data: Data?) {
 		
 		// get the object, update it.
 		// if not yet found, create it, and then update it.
@@ -159,7 +153,7 @@ class ShaprDataManager: NSObject, DataManager {
 		// set is there, you can just add the object.
 		
 		if derivedFormat == nil {
-			derivedFormat = Derived3DFormat(context: managedObjectContext!)
+			derivedFormat = Derived3DFormat(context: managedObjectContext)
 			derivedFormat?.id = UUID()
 			derivedFormat?.fileExtension = format.rawValue
 		}
@@ -171,14 +165,13 @@ class ShaprDataManager: NSObject, DataManager {
 		derivedFormat?.data = data
 		derivedFormat?.size = Int32(data?.count ?? 0)
 		
-		if let context = file.managedObjectContext {
-			do {
-				try context.save()
-			} catch {
-				let nserror = error as NSError
-				fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-			}
+		do {
+			try managedObjectContext.save()
+		} catch {
+			let nserror = error as NSError
+			fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
 		}
+		
 	}
 	
 	func objectAtIndex(_ index: Int) -> Base3DFormat {
