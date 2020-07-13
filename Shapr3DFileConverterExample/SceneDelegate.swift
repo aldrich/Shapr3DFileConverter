@@ -22,6 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UISplitViewControllerDe
 		navigationController.topViewController?.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
 		navigationController.topViewController?.navigationItem.leftItemsSupplementBackButton = true
 		splitViewController.delegate = self
+		splitViewController.preferredDisplayMode = .allVisible
 
 	}
 
@@ -43,7 +44,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UISplitViewControllerDe
 
 	// MARK: - Split view
 
-	func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController:UIViewController, onto primaryViewController:UIViewController) -> Bool {
+	func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
 	    guard let secondaryAsNavController = secondaryViewController as? UINavigationController else { return false }
 	    guard let topAsDetailController = secondaryAsNavController.topViewController as? DetailViewController else { return false }
 	    if topAsDetailController.item == nil {
