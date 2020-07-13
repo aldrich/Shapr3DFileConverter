@@ -19,13 +19,13 @@ class ContentCell: UICollectionViewCell {
 	
 	@IBOutlet weak var contentLabel: UILabel! {
 		didSet {
-			contentLabel.textColor = .white
-			contentLabel.font = .boldSystemFont(ofSize: 10)
+			contentLabel.font = .boldSystemFont(ofSize: 11)
 		}
 	}
 	
 	func populate(with format: ShaprOutputFormat) {
 		contentLabel.text = format.rawValue
 		backgroundColor = format.color
+		contentLabel.textColor = format.textColor
 	}
 }

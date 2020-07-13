@@ -22,4 +22,17 @@ extension ShaprOutputFormat {
 			return .black
 		}
 	}
+	
+	var textColor: UIColor {
+		switch self {
+		case .obj:
+			return .white
+		case .step:
+			return UIColor(red: 40/255.0, green: 51/255.0, blue: 74/255.0, alpha: 1)
+		case .stl:
+			return .white
+		default:
+			return .black
+		}
+	}
 }
