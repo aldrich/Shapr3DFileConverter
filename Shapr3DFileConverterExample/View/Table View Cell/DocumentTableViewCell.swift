@@ -22,7 +22,7 @@ class DocumentTableViewCell: UITableViewCell, LayoutDelegate {
 	@IBOutlet weak var iconImageView: UIImageView!
 	@IBOutlet weak var headerLabel: UILabel! {
 		didSet {
-			headerLabel.font = FontUtilities.roundedFont(ofSize: 16, weight: .bold)
+			headerLabel.font = FontUtilities.roundedFont(ofSize: 16, weight: .semibold)
 		}
 	}
 	
