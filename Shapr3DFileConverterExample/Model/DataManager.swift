@@ -10,31 +10,48 @@ import UIKit
 import CoreData
 import Shapr3DFileConverter
 
-protocol FetchedResultsManagerDelegate: class {
+protocol DataManagerDelegate: class {
+	
 	func willChange()
+	
 	func didChange()
+	
 	func shouldRefresh()
+	
 	func insertAt(_ indexPaths: [IndexPath])
+	
 	func deleteAt(_ indexPaths: [IndexPath])
 }
 
 protocol DataManager {
-	func importFile(filename: String, data: Data)
+	
+	func importFile(filename: String,
+					data: Data,
+					imageData: Data?,
+					thumbnailData: Data?)
+	
 	func getFileForID(baseFileId id: UUID) -> Base3DFormat?
-	func setConvertProgress(file: Base3DFormat,
+	
+	func updateConvertProgress(file: Base3DFormat,
 							targetFormat format: ShaprOutputFormat,
 							progress: Float,
 							created: Date?,
 							data: Data?)
+	
 	func objectAtIndex(_ index: Int) -> Base3DFormat
-	func numberOfRows() -> Int
+	
+	func count() -> Int
+	
 	func deleteAtIndex(_ index: Int)
-	func createSampleFiles(_ n: Int)
+	
+	// Bool param in imageProvider represents if image requested is
+	// for the thumbnail, and the Int provides a quick identifier.
+	func addSampleFiles(_ n: Int, imageProvider: (Int, Bool) -> Data?)
 }
 
-class ACDataManager: NSObject, DataManager, NSFetchedResultsControllerDelegate {
+class ShaprDataManager: NSObject, DataManager, NSFetchedResultsControllerDelegate {
 	
-	weak var delegate: FetchedResultsManagerDelegate?
+	weak var delegate: DataManagerDelegate?
 	
 	var managedObjectContext: NSManagedObjectContext? = nil
 	
@@ -61,10 +78,21 @@ class ACDataManager: NSObject, DataManager, NSFetchedResultsControllerDelegate {
 						 object: managedObjectContext)
 	}
 	
-	func createSampleFiles(_ n: Int) {
-		let files = (1...n).map { "sample-\($0).shapr" }
-		files.forEach {
-			self.importFile(filename: $0, data: Data())
+	// where Bool param in imageProvider represents if image requested is
+	// for the thumbnail.
+	func addSampleFiles(_ n: Int, imageProvider: (Int, Bool) -> Data?) {
+		
+		let randomData = { () -> Data in
+			let randomCount = Int.random(in: 128...1024)
+			return Data(count: randomCount)
+		}
+		
+		(1...n).forEach {
+			let filename = "sample-\($0).shapr"
+			self.importFile(filename: filename,
+							data: randomData(),
+							imageData: imageProvider($0, false),
+							thumbnailData: imageProvider($0, true))
 		}
 	}
 	
@@ -85,7 +113,11 @@ class ACDataManager: NSObject, DataManager, NSFetchedResultsControllerDelegate {
 		return nil
 	}
 	
-	func importFile(filename: String, data: Data) {
+	func importFile(filename: String,
+					data: Data,
+					imageData: Data?,
+					thumbnailData: Data?) {
+		
 		guard let context = self.managedObjectContext else {
 			fatalError("unable to get managed object context from FRC")
 		}
@@ -93,14 +125,13 @@ class ACDataManager: NSObject, DataManager, NSFetchedResultsControllerDelegate {
 		let new3D = Base3DFormat(context: context)
 		new3D.id = UUID()
 		
-		let imgData = imageData(filename: filename, id: new3D.id!)
 		new3D.filename = filename
-		new3D.imageFull = imgData
-		new3D.imageThumbnail = imageData(filename: filename, id: new3D.id!, thumb: true)
+		new3D.imageFull = imageData
+		new3D.imageThumbnail = thumbnailData
 		new3D.size = Int32(data.count)
 		new3D.created = Date()
 		new3D.derivedFormats = nil
-		new3D.data = imgData
+		new3D.data = imageData
 		
 		do {
 			try context.save()
@@ -110,7 +141,7 @@ class ACDataManager: NSObject, DataManager, NSFetchedResultsControllerDelegate {
 		}
 	}
 	
-	func setConvertProgress(file: Base3DFormat,
+	func updateConvertProgress(file: Base3DFormat,
 							targetFormat format: ShaprOutputFormat,
 							progress: Float,
 							created: Date?,
@@ -164,7 +195,7 @@ class ACDataManager: NSObject, DataManager, NSFetchedResultsControllerDelegate {
 			.object(at: IndexPath(row: index, section: 0))
 	}
 	
-	func numberOfRows() -> Int {
+	func count() -> Int {
 		let sectionInfo = fetchedResultsController.sections![0]
 		return sectionInfo.numberOfObjects
 	}
@@ -239,52 +270,5 @@ class ACDataManager: NSObject, DataManager, NSFetchedResultsControllerDelegate {
 	
 	func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
 		delegate?.didChange()
-	}
-}
-
-extension ACDataManager {
-	
-	func imageData(filename: String, id: UUID, thumb: Bool = false) -> Data? {
-		
-		let possibleImages = [
-			"burden",
-			"khaprenko",
-			"meiying",
-			"pat-kay",
-			"patrick-ryan",
-			"pawel-czerwinski",
-			"pawel-czerwinski-2",
-			"peter-nguyen",
-			"ren-ran",
-			"s-s",
-			"samsomfotos",
-			"samuel-zeller",
-			"spencer-davis",
-			"spratt",
-			"swan-leroi",
-			"t-h-chia",
-			"tyler-casey",
-			"vince-russell",
-			"william-warby",
-			"willian-justen-de-vasconcellos",
-			"yuiizaa-september",
-			"yuriy-garnaev",
-		]
-		
-		// arbitrary based on filename
-		let index = abs(id.uuidString.hashValue) % possibleImages.count
-		let imageName = possibleImages[index]
-		
-		let fullName = "\(imageName)-full"
-		let thumbName = "\(imageName)-thumb"
-		
-		let name = thumb ? thumbName : fullName
-		var image = UIImage(named: name)
-		
-		if thumb {
-			image = image?.makeRounded(radius: 4)
-		}
-		
-		return image?.pngData()
 	}
 }

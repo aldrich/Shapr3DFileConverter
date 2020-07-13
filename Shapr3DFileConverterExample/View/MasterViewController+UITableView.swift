@@ -15,12 +15,13 @@ extension MasterViewController {
 	
 	override func tableView(_ tableView: UITableView,
 							numberOfRowsInSection section: Int) -> Int {
-		return dataManager.numberOfRows()
+		return dataManager.count()
 	}
 	
 	override func tableView(_ tableView: UITableView,
 							cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		if let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? DocumentTableViewCell {
+		if let cell = tableView.dequeueReusableCell(withIdentifier: "Cell",
+													for: indexPath) as? DocumentTableViewCell {
 			let file = dataManager.objectAtIndex(indexPath.row)
 			cell.configureWith(file)
 			return cell
@@ -39,5 +40,29 @@ extension MasterViewController {
 		if editingStyle == .delete {
 			dataManager.deleteAtIndex(indexPath.row)
 		}
+	}
+}
+
+extension MasterViewController: DataManagerDelegate {
+	
+	func willChange() {
+		tableView.beginUpdates()
+	}
+	
+	func didChange() {
+		tableView.endUpdates()
+	}
+	
+	func shouldRefresh() {
+		tableView.reloadData()
+		detailViewController?.itemUpdated()
+	}
+	
+	func insertAt(_ indexPaths: [IndexPath]) {
+		tableView.insertRows(at: indexPaths, with: .fade)
+	}
+	
+	func deleteAt(_ indexPaths: [IndexPath]) {
+		tableView.deleteRows(at: indexPaths, with: .fade)
 	}
 }

@@ -10,6 +10,58 @@ import Foundation
 import UIKit
 import CoreGraphics
 
+
+class ImageUtilities {
+	
+	struct Constants {
+
+		// these are the names of the images included in the main assets bundle
+		static let possibleImages = [
+			"burden",
+			"khaprenko",
+			"meiying",
+			"pat-kay",
+			"patrick-ryan",
+			"pawel-czerwinski",
+			"pawel-czerwinski-2",
+			"peter-nguyen",
+			"ren-ran",
+			"s-s",
+			"samsomfotos",
+			"samuel-zeller",
+			"spencer-davis",
+			"spratt",
+			"swan-leroi",
+			"t-h-chia",
+			"tyler-casey",
+			"vince-russell",
+			"william-warby",
+			"willian-justen-de-vasconcellos",
+			"yuiizaa-september",
+			"yuriy-garnaev",
+		]
+	}
+	
+	static func imageData(hashValue: Int, thumb: Bool = false) -> Data? {
+		
+		// arbitrary based on filename
+		let index = abs(hashValue) % Constants.possibleImages.count
+		let imageName = Constants.possibleImages[index]
+		
+		let fullName = "\(imageName)-full"
+		let thumbName = "\(imageName)-thumb"
+		
+		let name = thumb ? thumbName : fullName
+		var image = UIImage(named: name)
+		
+		if thumb {
+			image = image?.makeRounded(radius: 4)
+		}
+		
+		return image?.pngData()
+	}
+}
+
 extension UIImage {
 	
 	func makeRounded(radius: CGFloat) -> UIImage {

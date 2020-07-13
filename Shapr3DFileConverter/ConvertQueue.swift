@@ -8,7 +8,7 @@
 
 import Foundation
 
-public typealias ProgressInfo = (created: Date?, progress: Float, data: Data?)
+public typealias ProgressInfo = (id: UUID, created: Date?, progress: Float, data: Data?)
 
 public protocol ConvertQueue {
 	
@@ -49,7 +49,7 @@ public class ConversionQueue: ConvertQueue {
 				print(message) // TODO: should delete?
 			}
 
-			update((created, progress, data))
+			update((id, created, progress, data))
 		}
 	}	
 }

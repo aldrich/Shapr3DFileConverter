@@ -21,7 +21,7 @@ class MasterViewController: UITableViewController {
 	}()
 	
 	lazy var dataManager: DataManager = {
-		let manager = ACDataManager()
+		let manager = ShaprDataManager()
 		manager.delegate = self
 		return manager
 	}()
@@ -37,8 +37,11 @@ class MasterViewController: UITableViewController {
 		configureNavigationButtonItems()
 		configureSplitViewController()
 		
-		if dataManager.numberOfRows() == 0 {
-			dataManager.createSampleFiles(5)
+		if dataManager.count() == 0 {
+			dataManager.addSampleFiles(5) { (index, isThumbnail) -> Data? in
+				ImageUtilities.imageData(hashValue: index,
+										 thumb: isThumbnail)
+			}
 		}
 	}
 	
@@ -75,13 +78,18 @@ class MasterViewController: UITableViewController {
 	// MARK: - Segues
 
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		
 		guard segue.identifier == "showDetail",
 			let indexPath = tableView.indexPathForSelectedRow else { return }
 		
+		let controller = (segue.destination as! UINavigationController)
+			.topViewController as! DetailViewController
+		
 		let object = dataManager.objectAtIndex(indexPath.row)
-		let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
 		controller.item = object
-		controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+		
+		controller.navigationItem.leftBarButtonItem = splitViewController?
+			.displayModeButtonItem
 		controller.navigationItem.leftItemsSupplementBackButton = true
 		
 		detailViewController = controller
@@ -91,14 +99,29 @@ class MasterViewController: UITableViewController {
 
 extension MasterViewController: ShaprDocumentPickerDelegate {
 	
+	// handles import
 	func didPickDocument(document: ShaprDocument?) {
 		guard let doc = document else { return }
 		doc.open { [weak self] success in
 			if success, let data = doc.data {
+				
 				let filename = doc.fileURL.lastPathComponent
 				
+				// need to be the same for both image and thumb
+				let hashValue = doc.fileURL.hashValue
+				
+				let imageData = ImageUtilities
+					.imageData(hashValue: hashValue)
+				
+				let thumbData = ImageUtilities
+					.imageData(hashValue: hashValue,
+							   thumb: true)
+				
 				self?.dataManager
-					.importFile(filename: filename, data: data)
+					.importFile(filename: filename,
+								data: data,
+								imageData: imageData,
+								thumbnailData: thumbData)
 			}
 		}
 	}
@@ -106,45 +129,23 @@ extension MasterViewController: ShaprDocumentPickerDelegate {
 
 extension MasterViewController: DetailViewControllerDelegate {
 	
+	// handles export
 	func detailViewRequestedConversion(baseFileId id: UUID,
 									   to format: ShaprOutputFormat) {
 		
 		guard let file = dataManager.getFileForID(baseFileId: id),
 			let fileData = file.data else {
-			print("no data found.")
-			return
+			fatalError("no data found.")
 		}
 		
-		convertQueue.add(id: id, data: fileData, format: format) { [weak self] info  in
-			self?.dataManager.setConvertProgress(file: file,
-												 targetFormat: format,
-												 progress: info.progress,
-												 created: info.created,
-												 data: info.data)
+		convertQueue.add(id: id, data: fileData,
+						 format: format) { [weak self] info  in
+			
+			self?.dataManager.updateConvertProgress(file: file,
+													targetFormat: format,
+													progress: info.progress,
+													created: info.created,
+													data: info.data)
 		}
-	}
-}
-
-extension MasterViewController: FetchedResultsManagerDelegate {
-	
-	func willChange() {
-		tableView.beginUpdates()
-	}
-	
-	func didChange() {
-		tableView.endUpdates()
-	}
-	
-	func shouldRefresh() {
-		tableView.reloadData()
-		detailViewController?.itemUpdated()
-	}
-	
-	func insertAt(_ indexPaths: [IndexPath]) {
-		tableView.insertRows(at: indexPaths, with: .fade)
-	}
-	
-	func deleteAt(_ indexPaths: [IndexPath]) {
-		tableView.deleteRows(at: indexPaths, with: .fade)
 	}
 }

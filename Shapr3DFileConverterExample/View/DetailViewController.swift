@@ -100,7 +100,7 @@ class DetailViewController: UIViewController {
 			detailLabel?.text = "Exported formats: \(formats)"
 		} else {
 			detailLabel?.text = String(format: "Created: %@",
-									   DateUtilities.dateFormatter.string(from: item.created!) )
+									   DateUtilities.dateFormatter.string(from: item.created!))
 		}
 		
 		imageView?.image = item.imageFull?.scaledImage
@@ -197,6 +197,7 @@ class DetailViewController: UIViewController {
 
 
 extension Base3DFormat {
+	
 	var formatsUndergoingExport: [Derived3DFormat] {
 		derivedFormats?.allObjects
 			.compactMap { $0 as? Derived3DFormat }

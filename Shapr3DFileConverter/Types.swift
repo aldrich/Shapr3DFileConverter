@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 public enum ShaprOutputFormat: String {
 	case shapr = "SHAPR"
@@ -14,3 +15,33 @@ public enum ShaprOutputFormat: String {
 	case stl = "STL"
 	case obj = "OBJ"
 }
+
+// we'll make the core data models subscribe to them
+
+protocol BaseFormat {
+	var id: UUID { get set }
+	var created: Date? { get set }
+	var data: Data? { get set }
+	var filename: String { get set }
+	var imageFull: Data? { get set }
+	var imageThumbnail: Data? { get set }
+	var size: Int32 { get set }
+	
+	var derivedFormats: NSSet? { get set }
+}
+
+
+protocol DerivedFormat {
+	var id: UUID { get set }
+	var convertProgress: Float? { get set }
+	var created: Date? { get set }
+	var data: Data? { get set }
+	var fileExtension: String? { get set }
+	var size: Int32? { get set }
+	
+	var base: BaseFormat? { get set }
+}
+
+//extension BaseFormat: NSFetchRequestResult {
+//
+//}

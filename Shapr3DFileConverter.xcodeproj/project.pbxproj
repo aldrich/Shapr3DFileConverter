@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		84A43901E9C4AF45C7349F55 /* Pods_Shapr3DFileConverterExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3BE0D0D9DCC06C73A3BB407 /* Pods_Shapr3DFileConverterExample.framework */; };
+		BE167EAF24BCAB6F00DDBA1B /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE167EAE24BCAB6F00DDBA1B /* DataManager.swift */; };
 		BECD0ABF24B9B3E000E51BA6 /* Shapr3DFileConverter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BECD0AB524B9B3E000E51BA6 /* Shapr3DFileConverter.framework */; };
 		BECD0AC424B9B3E000E51BA6 /* Shapr3DFileConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECD0AC324B9B3E000E51BA6 /* Shapr3DFileConverterTests.swift */; };
 		BECD0AC624B9B3E000E51BA6 /* Shapr3DFileConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = BECD0AB824B9B3E000E51BA6 /* Shapr3DFileConverter.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -20,18 +21,14 @@
 		BECD0AF824B9BC5600E51BA6 /* DocumentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECD0AF424B9BC5600E51BA6 /* DocumentTableViewCell.swift */; };
 		BECD0AF924B9BC5600E51BA6 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECD0AF524B9BC5600E51BA6 /* MasterViewController.swift */; };
 		BECD0AFA24B9BC5600E51BA6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECD0AF624B9BC5600E51BA6 /* DetailViewController.swift */; };
-		BECD0AFF24B9BC6100E51BA6 /* ShaprFile+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECD0AFC24B9BC6100E51BA6 /* ShaprFile+CoreData.swift */; };
 		BECD0B0024B9BC6100E51BA6 /* Shaper3DImport.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BECD0AFD24B9BC6100E51BA6 /* Shaper3DImport.xcdatamodeld */; };
 		BECD0B0424B9BC7000E51BA6 /* ShaprDocumentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECD0B0224B9BC7000E51BA6 /* ShaprDocumentPicker.swift */; };
 		BECD0B0524B9BC7000E51BA6 /* ShaprDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECD0B0324B9BC7000E51BA6 /* ShaprDocument.swift */; };
 		BECD0B0624B9BD3000E51BA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BECD0AF224B9BBC200E51BA6 /* Assets.xcassets */; };
-		BECD0B0824B9BFD400E51BA6 /* ShaprFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECD0B0724B9BFD400E51BA6 /* ShaprFile.swift */; };
-		BECD0B0A24B9E5E300E51BA6 /* DerivedFileFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECD0B0924B9E5E300E51BA6 /* DerivedFileFormat.swift */; };
 		BECD0B0C24B9F1BB00E51BA6 /* ConvertQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECD0B0B24B9F1BB00E51BA6 /* ConvertQueue.swift */; };
 		BEEED11124BAAA6C0084282B /* Base3DFormat+Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEED11024BAAA6C0084282B /* Base3DFormat+Display.swift */; };
 		BEEED11324BAAC190084282B /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEED11224BAAC190084282B /* Types.swift */; };
 		BEEED11624BAB0100084282B /* MasterViewController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEED11524BAB0100084282B /* MasterViewController+UITableView.swift */; };
-		BEEED11824BAB1BB0084282B /* ACDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEED11724BAB1BB0084282B /* ACDataManager.swift */; };
 		BEEED11A24BAD9590084282B /* CollectionViewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEED11924BAD9590084282B /* CollectionViewProvider.swift */; };
 		BEEED11C24BAD98A0084282B /* AccessoryViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEED11B24BAD98A0084282B /* AccessoryViews.swift */; };
 		BEEED11E24BADFEA0084282B /* TagsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEED11D24BADFEA0084282B /* TagsLayout.swift */; };
@@ -55,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		3DE4884A136EAD94FF87DEF0 /* Pods-Shapr3DFileConverterExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shapr3DFileConverterExample.debug.xcconfig"; path = "Target Support Files/Pods-Shapr3DFileConverterExample/Pods-Shapr3DFileConverterExample.debug.xcconfig"; sourceTree = "<group>"; };
+		BE167EAE24BCAB6F00DDBA1B /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		BECD0AB524B9B3E000E51BA6 /* Shapr3DFileConverter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Shapr3DFileConverter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BECD0AB824B9B3E000E51BA6 /* Shapr3DFileConverter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shapr3DFileConverter.h; sourceTree = "<group>"; };
 		BECD0AB924B9B3E000E51BA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -73,17 +71,13 @@
 		BECD0AF424B9BC5600E51BA6 /* DocumentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentTableViewCell.swift; sourceTree = "<group>"; };
 		BECD0AF524B9BC5600E51BA6 /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		BECD0AF624B9BC5600E51BA6 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		BECD0AFC24B9BC6100E51BA6 /* ShaprFile+CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ShaprFile+CoreData.swift"; sourceTree = "<group>"; };
 		BECD0AFE24B9BC6100E51BA6 /* Shaper3DImport.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shaper3DImport.xcdatamodel; sourceTree = "<group>"; };
 		BECD0B0224B9BC7000E51BA6 /* ShaprDocumentPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShaprDocumentPicker.swift; sourceTree = "<group>"; };
 		BECD0B0324B9BC7000E51BA6 /* ShaprDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShaprDocument.swift; sourceTree = "<group>"; };
-		BECD0B0724B9BFD400E51BA6 /* ShaprFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShaprFile.swift; sourceTree = "<group>"; };
-		BECD0B0924B9E5E300E51BA6 /* DerivedFileFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DerivedFileFormat.swift; sourceTree = "<group>"; };
 		BECD0B0B24B9F1BB00E51BA6 /* ConvertQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertQueue.swift; sourceTree = "<group>"; };
 		BEEED11024BAAA6C0084282B /* Base3DFormat+Display.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Base3DFormat+Display.swift"; sourceTree = "<group>"; };
 		BEEED11224BAAC190084282B /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		BEEED11524BAB0100084282B /* MasterViewController+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MasterViewController+UITableView.swift"; sourceTree = "<group>"; };
-		BEEED11724BAB1BB0084282B /* ACDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACDataManager.swift; sourceTree = "<group>"; };
 		BEEED11924BAD9590084282B /* CollectionViewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewProvider.swift; sourceTree = "<group>"; };
 		BEEED11B24BAD98A0084282B /* AccessoryViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryViews.swift; sourceTree = "<group>"; };
 		BEEED11D24BADFEA0084282B /* TagsLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsLayout.swift; sourceTree = "<group>"; };
@@ -163,7 +157,6 @@
 				BECD0AD824B9B4CB00E51BA6 /* Converter.swift */,
 				BECD0B0B24B9F1BB00E51BA6 /* ConvertQueue.swift */,
 				BEEED11224BAAC190084282B /* Types.swift */,
-				BEEED11424BAAC370084282B /* Unused */,
 			);
 			path = Shapr3DFileConverter;
 			sourceTree = "<group>";
@@ -198,7 +191,7 @@
 		BECD0AFB24B9BC6100E51BA6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				BECD0AFC24B9BC6100E51BA6 /* ShaprFile+CoreData.swift */,
+				BE167EAE24BCAB6F00DDBA1B /* DataManager.swift */,
 				BEEED11024BAAA6C0084282B /* Base3DFormat+Display.swift */,
 				BECD0AFD24B9BC6100E51BA6 /* Shaper3DImport.xcdatamodeld */,
 			);
@@ -221,7 +214,6 @@
 				BEEED11524BAB0100084282B /* MasterViewController+UITableView.swift */,
 				BECD0AF624B9BC5600E51BA6 /* DetailViewController.swift */,
 				BEEED12524BB3DE60084282B /* FileInfoTableViewController.swift */,
-				BEEED11724BAB1BB0084282B /* ACDataManager.swift */,
 				BEEED10F24BAA9920084282B /* Table View Cell */,
 			);
 			path = View;
@@ -234,15 +226,6 @@
 				BEEED12124BB21A00084282B /* Collection View */,
 			);
 			path = "Table View Cell";
-			sourceTree = "<group>";
-		};
-		BEEED11424BAAC370084282B /* Unused */ = {
-			isa = PBXGroup;
-			children = (
-				BECD0B0724B9BFD400E51BA6 /* ShaprFile.swift */,
-				BECD0B0924B9E5E300E51BA6 /* DerivedFileFormat.swift */,
-			);
-			path = Unused;
 			sourceTree = "<group>";
 		};
 		BEEED12124BB21A00084282B /* Collection View */ = {
@@ -461,9 +444,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEEED11324BAAC190084282B /* Types.swift in Sources */,
-				BECD0B0A24B9E5E300E51BA6 /* DerivedFileFormat.swift in Sources */,
 				BECD0AD924B9B4CB00E51BA6 /* Converter.swift in Sources */,
-				BECD0B0824B9BFD400E51BA6 /* ShaprFile.swift in Sources */,
 				BECD0B0C24B9F1BB00E51BA6 /* ConvertQueue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -490,6 +471,7 @@
 				BECD0AE124B9BB2E00E51BA6 /* AppDelegate.swift in Sources */,
 				BEEED12424BB227D0084282B /* FontUtilties.swift in Sources */,
 				BEEED12824BB434A0084282B /* DateUtilities.swift in Sources */,
+				BE167EAF24BCAB6F00DDBA1B /* DataManager.swift in Sources */,
 				BEEED12624BB3DE60084282B /* FileInfoTableViewController.swift in Sources */,
 				BEEED11C24BAD98A0084282B /* AccessoryViews.swift in Sources */,
 				BEEED11E24BADFEA0084282B /* TagsLayout.swift in Sources */,
@@ -499,9 +481,7 @@
 				BEEED11124BAAA6C0084282B /* Base3DFormat+Display.swift in Sources */,
 				BECD0AF724B9BC5600E51BA6 /* ImageUtilities.swift in Sources */,
 				BECD0AE324B9BB2E00E51BA6 /* SceneDelegate.swift in Sources */,
-				BEEED11824BAB1BB0084282B /* ACDataManager.swift in Sources */,
 				BEEED12C24BB4D6C0084282B /* AppDelegate+Appearance.swift in Sources */,
-				BECD0AFF24B9BC6100E51BA6 /* ShaprFile+CoreData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
