@@ -10,6 +10,10 @@ import UIKit
 import CoreData
 import Shapr3DFileConverter
 
+extension Base3DFormat: BaseFormat {}
+
+extension Derived3DFormat: DerivedFormat {}
+
 protocol DataManagerDelegate: class {
 	
 	func willChange()
@@ -18,9 +22,11 @@ protocol DataManagerDelegate: class {
 	
 	func shouldRefresh()
 	
-	func insertAt(_ indexPaths: [IndexPath])
+	func shouldRemove()
 	
-	func deleteAt(_ indexPaths: [IndexPath])
+	func shouldInsertAt(_ indexPaths: [IndexPath])
+	
+	func shouldDeleteAt(_ indexPaths: [IndexPath])
 }
 
 protocol DataManager {
@@ -33,27 +39,26 @@ protocol DataManager {
 	func getFileForID(baseFileId id: UUID) -> Base3DFormat?
 	
 	func updateConvertProgress(file: Base3DFormat,
-							targetFormat format: ShaprOutputFormat,
-							progress: Float,
-							created: Date?,
-							data: Data?)
+							   targetFormat format: ShaprOutputFormat,
+							   progress: Float,
+							   created: Date?,
+							   data: Data?)
 	
 	func objectAtIndex(_ index: Int) -> Base3DFormat
 	
 	func count() -> Int
 	
 	func deleteAtIndex(_ index: Int)
-	
-	// Bool param in imageProvider represents if image requested is
-	// for the thumbnail, and the Int provides a quick identifier.
-	func addSampleFiles(_ n: Int, imageProvider: (Int, Bool) -> Data?)
 }
 
-class ShaprDataManager: NSObject, DataManager, NSFetchedResultsControllerDelegate {
+class ShaprDataManager: NSObject, DataManager {
 	
 	weak var delegate: DataManagerDelegate?
 	
 	var managedObjectContext: NSManagedObjectContext? = nil
+	
+	var _fetchedResultsController:
+		NSFetchedResultsController<Base3DFormat>? = nil
 	
 	deinit {
 		NotificationCenter
@@ -78,25 +83,11 @@ class ShaprDataManager: NSObject, DataManager, NSFetchedResultsControllerDelegat
 						 object: managedObjectContext)
 	}
 	
-	// where Bool param in imageProvider represents if image requested is
-	// for the thumbnail.
-	func addSampleFiles(_ n: Int, imageProvider: (Int, Bool) -> Data?) {
-		
-		let randomData = { () -> Data in
-			let randomCount = Int.random(in: 128...1024)
-			return Data(count: randomCount)
-		}
-		
-		(1...n).forEach {
-			let filename = "sample-\($0).shapr"
-			self.importFile(filename: filename,
-							data: randomData(),
-							imageData: imageProvider($0, false),
-							thumbnailData: imageProvider($0, true))
-		}
-	}
-	
 	@objc fileprivate func managedObjectsDidChangeHandler(notification: NSNotification) {
+		if let _ = notification.userInfo?["deleted"] {
+			delegate?.shouldRemove()
+			return
+		}
 		delegate?.shouldRefresh()
 	}
 	
@@ -135,6 +126,7 @@ class ShaprDataManager: NSObject, DataManager, NSFetchedResultsControllerDelegat
 		
 		do {
 			try context.save()
+			print("import file \(filename) done.")
 		} catch {
 			let nserror = error as NSError
 			fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
@@ -169,7 +161,6 @@ class ShaprDataManager: NSObject, DataManager, NSFetchedResultsControllerDelegat
 		if derivedFormat == nil {
 			derivedFormat = Derived3DFormat(context: managedObjectContext!)
 			derivedFormat?.id = UUID()
-			derivedFormat?.base = file
 			derivedFormat?.fileExtension = format.rawValue
 		}
 		
@@ -211,64 +202,5 @@ class ShaprDataManager: NSObject, DataManager, NSFetchedResultsControllerDelegat
 			let nserror = error as NSError
 			fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
 		}
-	}
-	
-	// MARK: - FetchedResultsController
-	
-	private var _fetchedResultsController:
-		NSFetchedResultsController<Base3DFormat>? = nil
-	
-	private var fetchedResultsController: NSFetchedResultsController<Base3DFormat> {
-		
-		if _fetchedResultsController != nil {
-			return _fetchedResultsController!
-		}
-		
-		let fetchRequest: NSFetchRequest<Base3DFormat> =
-			Base3DFormat.fetchRequest()
-		
-		fetchRequest.fetchBatchSize = 20
-		
-		let sortDescriptor = NSSortDescriptor(key: "created", ascending: false)
-		
-		fetchRequest.sortDescriptors = [sortDescriptor]
-		
-		let aFetchedResultsController =
-			NSFetchedResultsController(fetchRequest: fetchRequest,
-									   managedObjectContext: self.managedObjectContext!,
-									   sectionNameKeyPath: nil, cacheName: "Master")
-		
-		aFetchedResultsController.delegate = self
-		
-		_fetchedResultsController = aFetchedResultsController
-		
-		do {
-			try _fetchedResultsController!.performFetch()
-		} catch {
-			let nserror = error as NSError
-			fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-		}
-		
-		return _fetchedResultsController!
-	}
-	
-	func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-		delegate?.willChange()
-	}
-	
-	func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
-					didChange anObject: Any,
-					at indexPath: IndexPath?,
-					for type: NSFetchedResultsChangeType,
-					newIndexPath: IndexPath?) {
-		switch type {
-		case .insert: delegate?.insertAt([newIndexPath!])
-		case .delete: delegate?.deleteAt([indexPath!])
-		default: return
-		}
-	}
-	
-	func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-		delegate?.didChange()
 	}
 }

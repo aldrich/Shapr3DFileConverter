@@ -58,11 +58,16 @@ extension MasterViewController: DataManagerDelegate {
 		detailViewController?.itemUpdated()
 	}
 	
-	func insertAt(_ indexPaths: [IndexPath]) {
+	func shouldRemove() {
+		tableView.reloadData()
+		detailViewController?.itemUpdated(isRemoved: true)
+	}
+	
+	func shouldInsertAt(_ indexPaths: [IndexPath]) {
 		tableView.insertRows(at: indexPaths, with: .fade)
 	}
 	
-	func deleteAt(_ indexPaths: [IndexPath]) {
+	func shouldDeleteAt(_ indexPaths: [IndexPath]) {
 		tableView.deleteRows(at: indexPaths, with: .fade)
 	}
 }

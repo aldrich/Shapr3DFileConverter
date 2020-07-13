@@ -38,10 +38,28 @@ class MasterViewController: UITableViewController {
 		configureSplitViewController()
 		
 		if dataManager.count() == 0 {
-			dataManager.addSampleFiles(5) { (index, isThumbnail) -> Data? in
+			addSampleFiles(5) { (index, isThumbnail) -> Data? in
 				ImageUtilities.imageData(hashValue: index,
 										 thumb: isThumbnail)
 			}
+		}
+	}
+	
+	// TODO: move outside
+	// where Bool param in imageProvider represents if image requested is
+	// for the thumbnail.
+	func addSampleFiles(_ n: Int, imageProvider: (Int, Bool) -> Data?) {
+		let randomData = { () -> Data in
+			let randomCount = Int.random(in: 128...1024)
+			return Data(count: randomCount)
+		}
+		
+		(1...n).forEach {
+			let filename = "sample-\($0).shapr"
+			dataManager.importFile(filename: filename,
+								   data: randomData(),
+								   imageData: imageProvider($0, false),
+								   thumbnailData: imageProvider($0, true))
 		}
 	}
 	

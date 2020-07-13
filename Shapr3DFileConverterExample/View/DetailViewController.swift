@@ -80,12 +80,16 @@ class DetailViewController: UIViewController {
 	}
 	
 	// call this when derivedObjects is updated.
-	func itemUpdated() {
+	func itemUpdated(isRemoved: Bool = false) {
+		self.item = nil
 		configureView()
 	}
 	
 	func configureView() {
-		guard let item = item else { return }
+		guard let item = item else {
+			showElements(false)
+			return
+		}
 		
 		showElements(true)
 		
