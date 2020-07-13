@@ -11,7 +11,7 @@ import Shapr3DFileConverter
 import MBProgressHUD
 
 protocol DetailViewControllerDelegate: class {
-	func requestedConversion(baseFileId id: UUID, to format: ShaprOutputFormat)
+	func detailViewRequestedConversion(baseFileId id: UUID, to format: ShaprOutputFormat)
 }
 
 class DetailViewController: UIViewController {
@@ -159,7 +159,7 @@ class DetailViewController: UIViewController {
 		}
 		
 		let requestConvert = { [weak self] (format: ShaprOutputFormat) -> Void in
-			self?.delegate?.requestedConversion(baseFileId: fileBaseId, to: format)
+			self?.delegate?.detailViewRequestedConversion(baseFileId: fileBaseId, to: format)
 		}
 		
 		let actionSheet = UIAlertController(title: nil,

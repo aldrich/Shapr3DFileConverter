@@ -9,11 +9,16 @@
 import UIKit
 import Shapr3DFileConverter
 
-class MasterViewController: UITableViewController, ShaprDocumentPickerDelegate {
+class MasterViewController: UITableViewController {
 
 	var detailViewController: DetailViewController? = nil
 
-	var documentPicker: ShaprDocumentPicker!
+	// used to show the file selector dialog to import .shapr files
+	// into the app
+	lazy var filePicker: ShaprDocumentPicker = {
+		return ShaprDocumentPicker(presentationController: self,
+								   delegate: self)
+	}()
 	
 	lazy var dataManager: DataManager = {
 		let manager = ACDataManager()
@@ -28,7 +33,9 @@ class MasterViewController: UITableViewController, ShaprDocumentPickerDelegate {
 		
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		configureView()
+		
+		configureNavigationButtonItems()
+		configureSplitViewController()
 		
 		if dataManager.numberOfRows() == 0 {
 			dataManager.createSampleFiles(5)
@@ -40,43 +47,31 @@ class MasterViewController: UITableViewController, ShaprDocumentPickerDelegate {
 		super.viewWillAppear(animated)
 	}
 	
-	func configureView() {
-		
-		navigationItem.leftBarButtonItem = editButtonItem
-		
+	private func configureNavigationButtonItems() {
 		let addButton = UIBarButtonItem(barButtonSystemItem: .add,
 										target: self,
-										action: #selector(pickPressed(_:)))
+										action: #selector(addButtonPressed(_:)))
 		
+		navigationItem.leftBarButtonItem = editButtonItem
 		navigationItem.rightBarButtonItem = addButton
-		
+	}
+	
+	private func configureSplitViewController() {
+		// get a reference to the detail view controller
 		if let split = splitViewController {
 			let controllers = split.viewControllers
-			detailViewController = (controllers[controllers.count-1] as! UINavigationController)
+			detailViewController = (controllers.last as? UINavigationController)?
 				.topViewController as? DetailViewController
 		}
-		
-		documentPicker = ShaprDocumentPicker(presentationController: self,
-											 delegate: self)
 	}
 	
-	@objc func pickPressed(_ sender: Any) {
-		if let bbItem = sender as? UIBarButtonItem {
-			documentPicker.present(from: bbItem)
-		}
+	// MARK: - Button Actions
+	
+	@objc func addButtonPressed(_ sender: Any) {
+		guard let bbItem = sender as? UIBarButtonItem else { return }
+		filePicker.present(from: bbItem)
 	}
 	
-	func didPickDocument(document: ShaprDocument?) {
-		guard let doc = document else { return }
-		doc.open { [weak self] success in
-			if success, let data = doc.data {
-				let filename = doc.fileURL.lastPathComponent
-				self?.dataManager
-					.importFile(filename: filename, data: data)
-			}
-		}
-	}
-		
 	// MARK: - Segues
 
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -94,9 +89,25 @@ class MasterViewController: UITableViewController, ShaprDocumentPickerDelegate {
 	}
 }
 
+extension MasterViewController: ShaprDocumentPickerDelegate {
+	
+	func didPickDocument(document: ShaprDocument?) {
+		guard let doc = document else { return }
+		doc.open { [weak self] success in
+			if success, let data = doc.data {
+				let filename = doc.fileURL.lastPathComponent
+				
+				self?.dataManager
+					.importFile(filename: filename, data: data)
+			}
+		}
+	}
+}
+
 extension MasterViewController: DetailViewControllerDelegate {
 	
-	func requestedConversion(baseFileId id: UUID, to format: ShaprOutputFormat) {
+	func detailViewRequestedConversion(baseFileId id: UUID,
+									   to format: ShaprOutputFormat) {
 		
 		guard let file = dataManager.getFileForID(baseFileId: id),
 			let fileData = file.data else {
