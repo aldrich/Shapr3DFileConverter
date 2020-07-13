@@ -133,8 +133,15 @@ class DetailViewController: UIViewController {
 	private func showElements(_ show: Bool) {
 		headerLabel?.isHidden = !show
 		detailLabel?.isHidden = !show
-		imageView?.isHidden = !show
 		creditsLabel?.isHidden = !show
+		
+		if show {
+			imageView.alpha = 0
+			UIView.animate(withDuration: 0.3) {
+				self.imageView?.alpha = 1
+			}
+		}
+		// imageView?.isHidden = !show
 	}
 	
 	@objc func showInfoPopup(sender: UIBarButtonItem) {
