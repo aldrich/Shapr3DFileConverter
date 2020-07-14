@@ -16,6 +16,7 @@ class ImageUtilities {
 	struct Constants {
 
 		// these are the names of the images included in the main assets bundle
+		// I got these images from Unsplash
 		static let possibleImages = [
 			"burden",
 			"khaprenko",

@@ -9,14 +9,5 @@
 import Foundation
 
 public struct UnitUtilities {
-	
-	static var byteCountFormatter: ByteCountFormatter = {
-		let bcf = ByteCountFormatter()
-		// configure...
-		bcf.countStyle = .file
-		bcf.includesUnit = true
-		bcf.allowedUnits = [.useKB, .useMB]
-		return bcf
-	}()
-	
+	static var byteCountFormatter = ByteCountFormatter()
 }

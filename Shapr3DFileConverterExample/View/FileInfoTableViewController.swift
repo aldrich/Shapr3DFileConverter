@@ -22,7 +22,14 @@ class FileInfoTableViewController: UITableViewController {
 	var sectionTitles = [String]()
 	var sections = [[String]]()
 	
-	func generateSectionSource(with item: Base3DFormat) {
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		preferredContentSize = CGSize(width: 320, height: 400)
+		tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+		tableView.allowsSelection = false
+	}
+	
+	private func generateSectionSource(with item: Base3DFormat) {
 	
 		let formatDate = { (date: Date, prefix: String) -> String in
 			let dateStr = DateUtilities.dateFormatter.string(from: date)
@@ -55,15 +62,7 @@ class FileInfoTableViewController: UITableViewController {
 		sectionTitles.append(contentsOf: item.convertedFormats.map { $0.fileExtension! })
 		sections.append(contentsOf: additionalSections)
 		
-		// be careful, no checking here yet!
 		tableView.reloadData()
-	}
-	
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		preferredContentSize = CGSize(width: 320, height: 400)
-		tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-		tableView.allowsSelection = false
 	}
 	
 	override func numberOfSections(in tableView: UITableView) -> Int {

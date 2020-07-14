@@ -90,27 +90,7 @@ class DocumentTableViewCell: UITableViewCell, LayoutDelegate {
 		
 		let date = DateUtilities.dateFormatter.string(from: created)
 		
-		var formatProgress = [String: Float]()
-		// get all the formats stored, and their progress
-		file.derivedFormats?.forEach({ (df) in
-			if let df = df as? Derived3DFormat  {
-				formatProgress[df.fileExtension!] = df.convertProgress
-			}
-		})
-		
-		let firstKV = formatProgress.filter { $0.value < 1 }.first
-		
-		var progressStr: String = ""
-		
-		if let firstKV = firstKV {
-			progressStr = String(format: "Exporting %@... %0.1f%%",
-								 firstKV.key,
-								 firstKV.value * 100.0)
-		} else {
-			progressStr = String(format: "%@", date)
-		}
-		
-		detailLabel?.text = progressStr
+		detailLabel?.text = file.getProgressString() ?? date
 		
 		imageView?.image = thumbnail.scaledImage
 		
@@ -129,5 +109,31 @@ class DocumentTableViewCell: UITableViewCell, LayoutDelegate {
 	
 	func cellSize(indexPath: IndexPath) -> CGSize {
 		return cellSizes[indexPath.section][indexPath.row]
+	}
+}
+
+extension Base3DFormat {
+	
+	func getProgressString() -> String? {
+		
+		// collect all the formats stored, and their progress
+		var formatProgress = [String: Float]()
+		
+		derivedFormats?.forEach { df in
+			if let df = df as? Derived3DFormat  {
+				formatProgress[df.fileExtension!] = df.convertProgress
+			}
+		}
+		
+		let firstKV = formatProgress.filter { $0.value < 1 }.first
+		
+		var progressStr: String?
+		
+		if let firstKV = firstKV {
+			progressStr = String(format: "Exporting %@... %0.1f%%",
+								 firstKV.key,
+								 firstKV.value * 100.0)
+		}
+		return progressStr
 	}
 }
