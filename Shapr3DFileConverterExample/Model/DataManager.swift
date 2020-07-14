@@ -10,10 +10,6 @@ import UIKit
 import CoreData
 import Shapr3DFileConverter
 
-extension Base3DFormat: BaseFormat {}
-
-extension Derived3DFormat: DerivedFormat {}
-
 protocol DataManagerDelegate: class {
 	
 	func willChange()
