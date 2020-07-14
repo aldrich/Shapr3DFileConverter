@@ -8,6 +8,7 @@
 
 import UIKit
 import Shapr3DFileConverter
+import CoreGraphics
 
 class DocumentTableViewCell: UITableViewCell, LayoutDelegate {
 	
@@ -16,10 +17,12 @@ class DocumentTableViewCell: UITableViewCell, LayoutDelegate {
 			tagsCollectionView.backgroundColor = .clear
 			tagsCollectionView.isScrollEnabled = false
 			tagsCollectionView.isUserInteractionEnabled = false
+			tagsCollectionView.transform = CGAffineTransform(scaleX: -1, y: 1);
 		}
 	}
 
 	@IBOutlet weak var iconImageView: UIImageView!
+	
 	@IBOutlet weak var headerLabel: UILabel! {
 		didSet {
 			headerLabel.font = FontUtilities.roundedFont(ofSize: 16, weight: .semibold)
@@ -38,7 +41,9 @@ class DocumentTableViewCell: UITableViewCell, LayoutDelegate {
 	
 	private let layout: TagsLayout = {
 		let ret = TagsLayout()
-		ret.contentPadding = ItemsPadding(horizontal: 0, vertical: 0)
+		
+		ret.contentPadding = ItemsPadding(horizontal: 0, vertical: 2)
+		
 		ret.cellsPadding = ItemsPadding(horizontal: 4, vertical: 0)
 		return ret
 	}()
@@ -55,14 +60,6 @@ class DocumentTableViewCell: UITableViewCell, LayoutDelegate {
 		
 		layout.delegate = self
     }
-	
-	func setTags(_ tags: [ShaprOutputFormat]) {
-		collectionViewProvider.items = [tags]
-		prepareCellSizes()
-		
-		tagsCollectionView.setContentOffset(.zero, animated: false)
-		tagsCollectionView.reloadData()
-	}
 	
 	private func prepareCellSizes() {
 		cellSizes.removeAll()
@@ -114,9 +111,18 @@ class DocumentTableViewCell: UITableViewCell, LayoutDelegate {
 		}
 		
 		detailLabel?.text = progressStr
+		
 		imageView?.image = thumbnail.scaledImage
 		
 		setTags(file.availableFormats(includeShapr: false))
+	}
+	
+	private func setTags(_ tags: [ShaprOutputFormat]) {
+		collectionViewProvider.items = [tags]
+		prepareCellSizes()
+		
+		tagsCollectionView.setContentOffset(.zero, animated: false)
+		tagsCollectionView.reloadData()
 	}
 	
 	// MARK: - LayoutDelegate

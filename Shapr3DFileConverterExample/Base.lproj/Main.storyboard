@@ -113,22 +113,22 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="72"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Heading" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ohz-a3-DWb">
-                                            <rect key="frame" x="72" y="15.5" width="62.5" height="19.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="Heading" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ohz-a3-DWb">
+                                            <rect key="frame" x="72" y="15.5" width="236" height="19.5"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="252" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mg1-dx-EUh" userLabel="Detail">
-                                            <rect key="frame" x="72" y="38" width="236" height="16"/>
+                                            <rect key="frame" x="72" y="38" width="35" height="16"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lRW-Ms-GEX">
-                                            <rect key="frame" x="144.5" y="18.5" width="163.5" height="14"/>
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lRW-Ms-GEX">
+                                            <rect key="frame" x="119" y="38" width="189" height="16"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="14" id="bf8-TM-Vtt"/>
+                                                <constraint firstAttribute="height" constant="16" id="bf8-TM-Vtt"/>
                                             </constraints>
                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Eq8-Qi-Wyo">
                                                 <size key="itemSize" width="100" height="16"/>
@@ -138,7 +138,7 @@
                                             </collectionViewFlowLayout>
                                             <cells>
                                                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ContentCell" id="HgB-pr-ZLH" customClass="ContentCell" customModule="Shapr3DFileConverterExample" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="-1" width="100" height="16"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="16"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="zev-tO-4rJ">
                                                         <rect key="frame" x="0.0" y="0.0" width="100" height="16"/>
@@ -172,16 +172,16 @@
                                         </imageView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="lRW-Ms-GEX" secondAttribute="trailing" constant="12" id="2uL-D9-ChQ"/>
                                         <constraint firstItem="rfy-R4-lac" firstAttribute="leading" secondItem="Ymn-nV-bh2" secondAttribute="leading" constant="12" id="5IQ-Pe-gUp"/>
-                                        <constraint firstItem="lRW-Ms-GEX" firstAttribute="leading" secondItem="ohz-a3-DWb" secondAttribute="trailing" constant="10" id="7GJ-k4-LGa"/>
+                                        <constraint firstItem="lRW-Ms-GEX" firstAttribute="leading" secondItem="Mg1-dx-EUh" secondAttribute="trailing" constant="12" id="832-eo-73U"/>
                                         <constraint firstItem="rfy-R4-lac" firstAttribute="centerY" secondItem="Ymn-nV-bh2" secondAttribute="centerY" id="DyJ-RU-AKB"/>
-                                        <constraint firstItem="lRW-Ms-GEX" firstAttribute="centerY" secondItem="ohz-a3-DWb" secondAttribute="centerY" id="SfQ-0k-O5X"/>
+                                        <constraint firstAttribute="trailing" secondItem="ohz-a3-DWb" secondAttribute="trailing" constant="12" id="GtA-wk-eqN"/>
+                                        <constraint firstItem="lRW-Ms-GEX" firstAttribute="centerY" secondItem="Mg1-dx-EUh" secondAttribute="centerY" id="SfQ-0k-O5X"/>
                                         <constraint firstItem="Mg1-dx-EUh" firstAttribute="top" secondItem="Ymn-nV-bh2" secondAttribute="centerY" constant="2" id="UE4-qs-Gdt"/>
                                         <constraint firstItem="ohz-a3-DWb" firstAttribute="bottom" secondItem="Ymn-nV-bh2" secondAttribute="centerY" constant="-1" id="Yhw-3D-rHe"/>
                                         <constraint firstItem="ohz-a3-DWb" firstAttribute="leading" secondItem="rfy-R4-lac" secondAttribute="trailing" constant="12" id="cwb-h3-1UD"/>
-                                        <constraint firstAttribute="trailing" secondItem="Mg1-dx-EUh" secondAttribute="trailing" constant="12" id="ejS-VI-cU4"/>
                                         <constraint firstItem="Mg1-dx-EUh" firstAttribute="leading" secondItem="ohz-a3-DWb" secondAttribute="leading" id="epy-iz-XBG"/>
-                                        <constraint firstAttribute="trailing" secondItem="lRW-Ms-GEX" secondAttribute="trailing" constant="12" id="rPn-vA-84h"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

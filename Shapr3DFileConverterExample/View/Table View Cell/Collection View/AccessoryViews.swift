@@ -8,6 +8,7 @@
 
 import UIKit
 import Shapr3DFileConverter
+import CoreGraphics
 
 class ContentCell: UICollectionViewCell {
 	
@@ -15,6 +16,7 @@ class ContentCell: UICollectionViewCell {
 		super.awakeFromNib()
 		layer.cornerRadius = 2
 		clipsToBounds = true
+		self.contentView.transform = CGAffineTransform(scaleX: -1, y: 1)
 	}
 	
 	@IBOutlet weak var contentLabel: UILabel! {

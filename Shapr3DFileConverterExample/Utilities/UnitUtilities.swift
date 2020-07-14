@@ -15,7 +15,6 @@ public struct UnitUtilities {
 		// configure...
 		bcf.countStyle = .file
 		bcf.includesUnit = true
-		bcf.isAdaptive = true
 		bcf.allowedUnits = [.useKB, .useMB]
 		return bcf
 	}()
