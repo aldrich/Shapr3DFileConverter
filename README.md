@@ -4,6 +4,8 @@ This is an app for iPad I created as part of the Shapr3D application exam.
 
 ---
 
+![](Extras/demo.gif)
+
 Here's what the app does: 
 
 - It shows a list of SHAPR files already added on the left hand side. It is a list composed of a thumbnail image, the name of the file, and the date when it was added. If a third-party format has been exported from the original file, a label is added to the entry indicating it.
