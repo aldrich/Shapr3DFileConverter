@@ -138,21 +138,18 @@ class DetailViewController: UIViewController {
 		if show {
 			imageView?.alpha = 0
 			if animate {
-				UIView.animate(withDuration: 0.3) {
+				UIView.animate(withDuration: 0.25) {
 					self.imageView?.alpha = 1
 				}
 			} else {
 				imageView?.alpha = 1
 			}
+			imageView.contentMode = .scaleAspectFill
+			
 		} else {
-			imageView?.alpha = 1
-			if animate {
-				UIView.animate(withDuration: 0.3) {
-					self.imageView?.alpha = 0
-				}
-			} else {
-				imageView?.alpha = 0
-			}
+			imageView.alpha = 1
+			imageView.image = UIImage(named: "detail-view-empty")
+			imageView.contentMode = .scaleAspectFit
 		}
 	}
 	
