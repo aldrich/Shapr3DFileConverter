@@ -11,8 +11,9 @@
 		BE167EAF24BCAB6F00DDBA1B /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE167EAE24BCAB6F00DDBA1B /* DataManager.swift */; };
 		BE167EB324BCAE5A00DDBA1B /* DataManager+FetchedResultsControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE167EB224BCAE5A00DDBA1B /* DataManager+FetchedResultsControllerDelegate.swift */; };
 		BE167EB524BCB52C00DDBA1B /* ColorUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE167EB424BCB52C00DDBA1B /* ColorUtilities.swift */; };
+		BEB49F1F24BD99CE009E9133 /* ConvertQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB49F1E24BD99CE009E9133 /* ConvertQueueTests.swift */; };
 		BECD0ABF24B9B3E000E51BA6 /* Shapr3DFileConverter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BECD0AB524B9B3E000E51BA6 /* Shapr3DFileConverter.framework */; };
-		BECD0AC424B9B3E000E51BA6 /* Shapr3DFileConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECD0AC324B9B3E000E51BA6 /* Shapr3DFileConverterTests.swift */; };
+		BECD0AC424B9B3E000E51BA6 /* ConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECD0AC324B9B3E000E51BA6 /* ConverterTests.swift */; };
 		BECD0AC624B9B3E000E51BA6 /* Shapr3DFileConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = BECD0AB824B9B3E000E51BA6 /* Shapr3DFileConverter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BECD0AD924B9B4CB00E51BA6 /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECD0AD824B9B4CB00E51BA6 /* Converter.swift */; };
 		BECD0AE124B9BB2E00E51BA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECD0AE024B9BB2E00E51BA6 /* AppDelegate.swift */; };
@@ -57,11 +58,12 @@
 		BE167EAE24BCAB6F00DDBA1B /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		BE167EB224BCAE5A00DDBA1B /* DataManager+FetchedResultsControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataManager+FetchedResultsControllerDelegate.swift"; sourceTree = "<group>"; };
 		BE167EB424BCB52C00DDBA1B /* ColorUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorUtilities.swift; sourceTree = "<group>"; };
+		BEB49F1E24BD99CE009E9133 /* ConvertQueueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertQueueTests.swift; sourceTree = "<group>"; };
 		BECD0AB524B9B3E000E51BA6 /* Shapr3DFileConverter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Shapr3DFileConverter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BECD0AB824B9B3E000E51BA6 /* Shapr3DFileConverter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shapr3DFileConverter.h; sourceTree = "<group>"; };
 		BECD0AB924B9B3E000E51BA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BECD0ABE24B9B3E000E51BA6 /* Shapr3DFileConverterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Shapr3DFileConverterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BECD0AC324B9B3E000E51BA6 /* Shapr3DFileConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shapr3DFileConverterTests.swift; sourceTree = "<group>"; };
+		BECD0AC324B9B3E000E51BA6 /* ConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterTests.swift; sourceTree = "<group>"; };
 		BECD0AC524B9B3E000E51BA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BECD0AD824B9B4CB00E51BA6 /* Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
 		BECD0ADE24B9BB2E00E51BA6 /* Shapr3DFileConverterExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shapr3DFileConverterExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -168,7 +170,8 @@
 		BECD0AC224B9B3E000E51BA6 /* Shapr3DFileConverterTests */ = {
 			isa = PBXGroup;
 			children = (
-				BECD0AC324B9B3E000E51BA6 /* Shapr3DFileConverterTests.swift */,
+				BECD0AC324B9B3E000E51BA6 /* ConverterTests.swift */,
+				BEB49F1E24BD99CE009E9133 /* ConvertQueueTests.swift */,
 				BECD0AC524B9B3E000E51BA6 /* Info.plist */,
 			);
 			path = Shapr3DFileConverterTests;
@@ -459,7 +462,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BECD0AC424B9B3E000E51BA6 /* Shapr3DFileConverterTests.swift in Sources */,
+				BECD0AC424B9B3E000E51BA6 /* ConverterTests.swift in Sources */,
+				BEB49F1F24BD99CE009E9133 /* ConvertQueueTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

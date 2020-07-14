@@ -8,7 +8,13 @@
 
 import Foundation
 
-public typealias ProgressInfo = (id: UUID, created: Date?, progress: Float, data: Data?)
+public typealias ProgressInfo = (
+	id: UUID,
+	created: Date?,
+	progress: Float,
+	format: ShaprOutputFormat,
+	data: Data?
+)
 
 public protocol ConvertQueue {
 	
@@ -56,7 +62,11 @@ public class ConversionQueue: ConvertQueue {
 				self?.queue.removeValue(forKey: id)
 			}
 
-			update((id, created, progress, data))
+			update((id, created, progress, format, data))
 		}
-	}	
+	}
+	
+	public var ongoingConversions: [UUID] {
+		return Array(queue.keys)
+	}
 }
