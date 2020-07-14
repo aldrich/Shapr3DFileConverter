@@ -136,22 +136,22 @@ class DetailViewController: UIViewController {
 		creditsLabel?.isHidden = !show
 		
 		if show {
-			imageView.alpha = 0
+			imageView?.alpha = 0
 			if animate {
 				UIView.animate(withDuration: 0.3) {
 					self.imageView?.alpha = 1
 				}
 			} else {
-				imageView.alpha = 1
+				imageView?.alpha = 1
 			}
 		} else {
-			imageView.alpha = 1
+			imageView?.alpha = 1
 			if animate {
 				UIView.animate(withDuration: 0.3) {
 					self.imageView?.alpha = 0
 				}
 			} else {
-				imageView.alpha = 0
+				imageView?.alpha = 0
 			}
 		}
 	}
