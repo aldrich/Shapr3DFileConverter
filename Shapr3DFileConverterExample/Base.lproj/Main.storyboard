@@ -100,32 +100,32 @@
         <scene sceneID="smW-Zh-WAh">
             <objects>
                 <tableViewController clearsSelectionOnViewWillAppear="NO" id="7bK-jq-Zjz" customClass="MasterViewController" customModule="Shapr3DFileConverterExample" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="72" estimatedRowHeight="72" sectionHeaderHeight="28" sectionFooterHeight="28" id="r7i-6Z-zg0">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="88" estimatedRowHeight="88" sectionHeaderHeight="28" sectionFooterHeight="28" id="r7i-6Z-zg0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="F75-v3-tWj" customClass="DocumentTableViewCell" customModule="Shapr3DFileConverterExample" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="320" height="72"/>
+                                <rect key="frame" x="0.0" y="28" width="320" height="88"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F75-v3-tWj" id="Ymn-nV-bh2">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="72"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="88"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="Heading" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ohz-a3-DWb">
-                                            <rect key="frame" x="72" y="15.5" width="236" height="19.5"/>
+                                            <rect key="frame" x="88" y="23.5" width="220" height="19.5"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="252" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mg1-dx-EUh" userLabel="Detail">
-                                            <rect key="frame" x="72" y="38" width="35" height="16"/>
+                                            <rect key="frame" x="88" y="46" width="35" height="16"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lRW-Ms-GEX">
-                                            <rect key="frame" x="119" y="38" width="189" height="16"/>
+                                            <rect key="frame" x="135" y="46" width="173" height="16"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="16" id="bf8-TM-Vtt"/>
                                             </constraints>
@@ -163,10 +163,10 @@
                                             </cells>
                                         </collectionView>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rfy-R4-lac" userLabel="Icon">
-                                            <rect key="frame" x="12" y="12" width="48" height="48"/>
+                                            <rect key="frame" x="12" y="12" width="64" height="64"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="48" id="fzC-Qx-fNd"/>
-                                                <constraint firstAttribute="width" constant="48" id="oh3-gc-IKT"/>
+                                                <constraint firstAttribute="height" constant="64" id="fzC-Qx-fNd"/>
+                                                <constraint firstAttribute="width" constant="64" id="oh3-gc-IKT"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>

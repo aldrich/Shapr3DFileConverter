@@ -45,9 +45,11 @@ class ImageUtilities {
 	
 	static func imageData(hashValue: Int, thumb: Bool = false) -> Data? {
 		
+		let imageNames = (1...14).map { "image-\($0)" }
+		
 		// arbitrary based on filename
-		let index = abs(hashValue) % Constants.possibleImages.count
-		let imageName = Constants.possibleImages[index]
+		let index = abs(hashValue) % imageNames.count // Constants.possibleImages.count
+		let imageName = imageNames[index] // Constants.possibleImages[index]
 		
 		let fullName = "\(imageName)-full"
 		let thumbName = "\(imageName)-thumb"
