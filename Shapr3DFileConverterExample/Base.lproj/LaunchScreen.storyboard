@@ -14,7 +14,20 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="detail-view-empty" translatesAutoresizingMaskIntoConstraints="NO" id="wXC-3y-L3O">
+                                <rect key="frame" x="256" y="417" width="512" height="512"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="512" id="18z-4o-DKA"/>
+                                    <constraint firstAttribute="height" constant="512" id="hfa-Fk-6ka"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="wXC-3y-L3O" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="6TH-JT-pBh"/>
+                            <constraint firstItem="wXC-3y-L3O" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="NnM-TO-1UQ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
@@ -23,4 +36,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="detail-view-empty" width="256" height="256"/>
+    </resources>
 </document>
