@@ -29,7 +29,7 @@
 		BECD0B0624B9BD3000E51BA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BECD0AF224B9BBC200E51BA6 /* Assets.xcassets */; };
 		BECD0B0C24B9F1BB00E51BA6 /* ConvertQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECD0B0B24B9F1BB00E51BA6 /* ConvertQueue.swift */; };
 		BEEED11124BAAA6C0084282B /* Base3DFormat+Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEED11024BAAA6C0084282B /* Base3DFormat+Display.swift */; };
-		BEEED11324BAAC190084282B /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEED11224BAAC190084282B /* Types.swift */; };
+		BEEED11324BAAC190084282B /* ShaprOutputFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEED11224BAAC190084282B /* ShaprOutputFormat.swift */; };
 		BEEED11624BAB0100084282B /* MasterViewController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEED11524BAB0100084282B /* MasterViewController+UITableView.swift */; };
 		BEEED11A24BAD9590084282B /* CollectionViewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEED11924BAD9590084282B /* CollectionViewProvider.swift */; };
 		BEEED11C24BAD98A0084282B /* AccessoryViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEED11B24BAD98A0084282B /* AccessoryViews.swift */; };
@@ -80,7 +80,7 @@
 		BECD0B0324B9BC7000E51BA6 /* ShaprDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShaprDocument.swift; sourceTree = "<group>"; };
 		BECD0B0B24B9F1BB00E51BA6 /* ConvertQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertQueue.swift; sourceTree = "<group>"; };
 		BEEED11024BAAA6C0084282B /* Base3DFormat+Display.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Base3DFormat+Display.swift"; sourceTree = "<group>"; };
-		BEEED11224BAAC190084282B /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
+		BEEED11224BAAC190084282B /* ShaprOutputFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShaprOutputFormat.swift; sourceTree = "<group>"; };
 		BEEED11524BAB0100084282B /* MasterViewController+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MasterViewController+UITableView.swift"; sourceTree = "<group>"; };
 		BEEED11924BAD9590084282B /* CollectionViewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewProvider.swift; sourceTree = "<group>"; };
 		BEEED11B24BAD98A0084282B /* AccessoryViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryViews.swift; sourceTree = "<group>"; };
@@ -160,7 +160,7 @@
 				BECD0AB924B9B3E000E51BA6 /* Info.plist */,
 				BECD0AD824B9B4CB00E51BA6 /* Converter.swift */,
 				BECD0B0B24B9F1BB00E51BA6 /* ConvertQueue.swift */,
-				BEEED11224BAAC190084282B /* Types.swift */,
+				BEEED11224BAAC190084282B /* ShaprOutputFormat.swift */,
 			);
 			path = Shapr3DFileConverter;
 			sourceTree = "<group>";
@@ -449,7 +449,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BEEED11324BAAC190084282B /* Types.swift in Sources */,
+				BEEED11324BAAC190084282B /* ShaprOutputFormat.swift in Sources */,
 				BECD0AD924B9B4CB00E51BA6 /* Converter.swift in Sources */,
 				BECD0B0C24B9F1BB00E51BA6 /* ConvertQueue.swift in Sources */,
 			);
