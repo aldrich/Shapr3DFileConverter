@@ -162,7 +162,7 @@
                                                 </collectionViewCell>
                                             </cells>
                                         </collectionView>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rfy-R4-lac" userLabel="Icon">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rfy-R4-lac" userLabel="Icon">
                                             <rect key="frame" x="12" y="12" width="64" height="64"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="64" id="fzC-Qx-fNd"/>

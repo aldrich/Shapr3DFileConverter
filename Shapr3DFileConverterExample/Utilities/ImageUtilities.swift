@@ -17,39 +17,43 @@ class ImageUtilities {
 
 		// these are the names of the images included in the main assets bundle
 		// I got these images from Unsplash
-		static let possibleImages = [
-			"burden",
-			"khaprenko",
-			"meiying",
-			"pat-kay",
-			"patrick-ryan",
-			"pawel-czerwinski",
-			"pawel-czerwinski-2",
-			"peter-nguyen",
-			"ren-ran",
-			"s-s",
-			"samsomfotos",
-			"samuel-zeller",
-			"spencer-davis",
-			"spratt",
-			"swan-leroi",
-			"t-h-chia",
-			"tyler-casey",
-			"vince-russell",
-			"william-warby",
-			"willian-justen-de-vasconcellos",
-			"yuiizaa-september",
-			"yuriy-garnaev",
+		static let unsplashImages = [
+			"chris-becker-52648-unsplash",
+			"christian-holzinger-CUY_YHhCFl4",
+			"christian-schrader-1204549-unsplash",
+			"dmitri-popov-173676-unsplash",
+			"ibrahim-mushan-qnjKufYqIIE",
+			"jack-anstey-XVoyX7l9ocY",
+			"jacob-ufkes-1vTFoSyWyFQ",
+			"james-donovan-OqBAhbdRsFg",
+			"jay-castor-7AcMUSYRZpU-unsplash",
+			"jelle-plevier-1364756-unsplash",
+			"jesse-orrico-232823-unsplash",
+			"john-purakal-1189719-unsplash",
+			"joshua-sortino-xZqr8WtYEJ0",
+			"julien-moreau-83192-unsplash",
+			"kyaw-tun-lK3x9PCj0j4-unsplash",
+			"lai-man-nung-1205465-unsplash",
+			"marcelo-cidrack-1514307-unsplash",
+			"meiying-ng-OrwkD-iWgqg-unsplash",
+			"mitchell-luo-UiSU4AUcQEA-unsplash",
+			"nathan-anderson-111801",
+			"pascal-debrunner-1471182-unsplash",
+			"samsomfotos-vddccTqwal8",
+			"t-h-chia-1485987-unsplash",
+			"tyler-casey-1474093-unsplash",
+			"willian-justen de vasconcellos-cNagAGEok9k",
+			"yuriy-garnaev-HBGl-1uwgSY-unsplash",
 		]
 	}
 	
 	static func imageData(hashValue: Int, thumb: Bool = false) -> Data? {
 		
-		let imageNames = (1...14).map { "image-\($0)" }
+		let imageNames = (1...14).map { "image-\($0)" } + Constants.unsplashImages
 		
 		// arbitrary based on filename
-		let index = abs(hashValue) % imageNames.count // Constants.possibleImages.count
-		let imageName = imageNames[index] // Constants.possibleImages[index]
+		let index = abs(hashValue) % imageNames.count
+		let imageName = imageNames[index]
 		
 		let fullName = "\(imageName)-full"
 		let thumbName = "\(imageName)-thumb"
@@ -58,7 +62,7 @@ class ImageUtilities {
 		var image = UIImage(named: name)
 		
 		if thumb {
-			image = image?.makeRounded(radius: 4)
+			image = image?.makeRounded(radius: 5)
 		}
 		
 		return image?.pngData()
