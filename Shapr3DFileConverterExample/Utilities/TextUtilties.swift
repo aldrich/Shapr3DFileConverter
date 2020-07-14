@@ -1,5 +1,5 @@
 //
-//  FontUtilities.swift
+//  TextUtilities.swift
 //  Shapr3DFileConverterExample
 //
 //  Created by Aldrich Co on 7/12/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FontUtilities {
+class TextUtilities {
 	
 	static func roundedFont(ofSize fontSize: CGFloat, weight: UIFont.Weight) -> UIFont {
 		let systemFont = UIFont.systemFont(ofSize: fontSize, weight: weight)
@@ -35,5 +35,16 @@ class FontUtilities {
 						  options: NSStringDrawingOptions.usesLineFragmentOrigin,
 						  attributes: [NSAttributedString.Key.font: font],
 						  context: nil).size
+	}
+}
+
+extension URL {
+	
+	// make sure our fake imported file appear like shapr files by extension
+	func fileNameWithPathExtensionAsShapr() -> String {
+		var path = self
+		path.deletePathExtension()
+		path.appendPathExtension("shapr")
+		return path.lastPathComponent
 	}
 }

@@ -132,7 +132,8 @@ extension MasterViewController: ShaprDocumentPickerDelegate {
 		doc.open { [weak self] success in
 			if success, let data = doc.data {
 				
-				let filename = doc.fileURL.lastPathComponent
+				let filename = doc.fileURL
+					.fileNameWithPathExtensionAsShapr()
 				
 				// need to be the same for both image and thumb
 				let hashValue = Int(arc4random())

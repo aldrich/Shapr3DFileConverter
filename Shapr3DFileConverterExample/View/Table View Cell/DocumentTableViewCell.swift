@@ -25,13 +25,13 @@ class DocumentTableViewCell: UITableViewCell, LayoutDelegate {
 	
 	@IBOutlet weak var headerLabel: UILabel! {
 		didSet {
-			headerLabel.font = FontUtilities.roundedFont(ofSize: 16, weight: .semibold)
+			headerLabel.font = TextUtilities.roundedFont(ofSize: 16, weight: .semibold)
 		}
 	}
 	
 	@IBOutlet weak var detailLabel: UILabel! {
 		didSet {
-			detailLabel.font = FontUtilities.roundedFont(ofSize: 12, weight: .regular)
+			detailLabel.font = TextUtilities.roundedFont(ofSize: 12, weight: .regular)
 		}
 	}
 	
@@ -67,7 +67,7 @@ class DocumentTableViewCell: UITableViewCell, LayoutDelegate {
 		collectionViewProvider.items.forEach { items in
 			let sizes = items.map { item -> CGSize in
 				let width = Double(self.tagsCollectionView.bounds.width)
-				var size = FontUtilities.sizeOfString(string: item.rawValue,
+				var size = TextUtilities.sizeOfString(string: item.rawValue,
 													  font: .boldSystemFont(ofSize: 10),
 													  constrainedToWidth: width)
 				size.width += 10

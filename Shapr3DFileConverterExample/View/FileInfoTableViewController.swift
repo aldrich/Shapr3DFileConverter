@@ -80,7 +80,7 @@ class FileInfoTableViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
 		let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-		cell.textLabel?.font = FontUtilities.roundedFont(ofSize: 15, weight: .regular)
+		cell.textLabel?.font = TextUtilities.roundedFont(ofSize: 15, weight: .regular)
 		cell.textLabel?.minimumScaleFactor = 0.7
 		cell.textLabel?.adjustsFontSizeToFitWidth = true
 		cell.textLabel?.text = sections[indexPath.section][indexPath.row]

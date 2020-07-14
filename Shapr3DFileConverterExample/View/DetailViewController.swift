@@ -26,21 +26,21 @@ class DetailViewController: UIViewController {
 	
 	@IBOutlet weak var headerLabel: UILabel! {
 		didSet {
-			headerLabel.font = FontUtilities.roundedFont(ofSize: 14,
+			headerLabel.font = TextUtilities.roundedFont(ofSize: 14,
 														 weight: .bold)
 		}
 	}
 	
 	@IBOutlet weak var detailLabel: UILabel! {
 		didSet {
-			detailLabel.font = FontUtilities.roundedFont(ofSize: 12,
+			detailLabel.font = TextUtilities.roundedFont(ofSize: 12,
 														 weight: .regular)
 		}
 	}
 	
 	@IBOutlet weak var creditsLabel: UILabel! {
 		didSet {
-			creditsLabel.font = FontUtilities.roundedFont(ofSize: 10,
+			creditsLabel.font = TextUtilities.roundedFont(ofSize: 10,
 														  weight: .regular)
 		}
 	}

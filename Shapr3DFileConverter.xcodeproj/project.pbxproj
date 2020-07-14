@@ -36,7 +36,7 @@
 		BEEED11C24BAD98A0084282B /* AccessoryViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEED11B24BAD98A0084282B /* AccessoryViews.swift */; };
 		BEEED11E24BADFEA0084282B /* TagsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEED11D24BADFEA0084282B /* TagsLayout.swift */; };
 		BEEED12024BAE0520084282B /* BaseLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEED11F24BAE0520084282B /* BaseLayout.swift */; };
-		BEEED12424BB227D0084282B /* FontUtilties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEED12324BB227D0084282B /* FontUtilties.swift */; };
+		BEEED12424BB227D0084282B /* TextUtilties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEED12324BB227D0084282B /* TextUtilties.swift */; };
 		BEEED12624BB3DE60084282B /* FileInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEED12524BB3DE60084282B /* FileInfoTableViewController.swift */; };
 		BEEED12824BB434A0084282B /* DateUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEED12724BB434A0084282B /* DateUtilities.swift */; };
 		BEEED12A24BB47810084282B /* UnitUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEED12924BB47810084282B /* UnitUtilities.swift */; };
@@ -88,7 +88,7 @@
 		BEEED11B24BAD98A0084282B /* AccessoryViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryViews.swift; sourceTree = "<group>"; };
 		BEEED11D24BADFEA0084282B /* TagsLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsLayout.swift; sourceTree = "<group>"; };
 		BEEED11F24BAE0520084282B /* BaseLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLayout.swift; sourceTree = "<group>"; };
-		BEEED12324BB227D0084282B /* FontUtilties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontUtilties.swift; sourceTree = "<group>"; };
+		BEEED12324BB227D0084282B /* TextUtilties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextUtilties.swift; sourceTree = "<group>"; };
 		BEEED12524BB3DE60084282B /* FileInfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileInfoTableViewController.swift; sourceTree = "<group>"; };
 		BEEED12724BB434A0084282B /* DateUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtilities.swift; sourceTree = "<group>"; };
 		BEEED12924BB47810084282B /* UnitUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitUtilities.swift; sourceTree = "<group>"; };
@@ -252,7 +252,7 @@
 			children = (
 				BECD0AF324B9BC5600E51BA6 /* ImageUtilities.swift */,
 				BE167EB424BCB52C00DDBA1B /* ColorUtilities.swift */,
-				BEEED12324BB227D0084282B /* FontUtilties.swift */,
+				BEEED12324BB227D0084282B /* TextUtilties.swift */,
 				BEEED12724BB434A0084282B /* DateUtilities.swift */,
 				BEEED12924BB47810084282B /* UnitUtilities.swift */,
 			);
@@ -480,7 +480,7 @@
 				BECD0B0424B9BC7000E51BA6 /* ShaprDocumentPicker.swift in Sources */,
 				BECD0AF824B9BC5600E51BA6 /* DocumentTableViewCell.swift in Sources */,
 				BECD0AE124B9BB2E00E51BA6 /* AppDelegate.swift in Sources */,
-				BEEED12424BB227D0084282B /* FontUtilties.swift in Sources */,
+				BEEED12424BB227D0084282B /* TextUtilties.swift in Sources */,
 				BEEED12824BB434A0084282B /* DateUtilities.swift in Sources */,
 				BE167EAF24BCAB6F00DDBA1B /* DataManager.swift in Sources */,
 				BEEED12624BB3DE60084282B /* FileInfoTableViewController.swift in Sources */,

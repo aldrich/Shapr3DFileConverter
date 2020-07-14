@@ -15,7 +15,7 @@ extension AppDelegate {
 		let setAppearance = { (bar: UINavigationBar) in
 			bar.barStyle = .default
 			bar.titleTextAttributes = [
-				.font: FontUtilities.roundedFont(ofSize: 18, weight: .semibold)
+				.font: TextUtilities.roundedFont(ofSize: 18, weight: .semibold)
 			]
 			bar.tintColor = .darkGray
 		}
